@@ -7,17 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F55606751DF1C37C003EA862 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55606741DF1C37C003EA862 /* PostTableViewCell.swift */; };
+		F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D2281DF1CF60005C1DD1 /* Post.swift */; };
+		F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */; };
+		F58294961DE38B1D0080044B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58294951DE38B1D0080044B /* User.swift */; };
 		F59624A21DD2782400EDD78C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59624A11DD2782400EDD78C /* AppDelegate.swift */; };
-		F59624A41DD2782400EDD78C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59624A31DD2782400EDD78C /* ViewController.swift */; };
+		F59624A41DD2782400EDD78C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59624A31DD2782400EDD78C /* LoginViewController.swift */; };
 		F59624A71DD2782400EDD78C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59624A51DD2782400EDD78C /* Main.storyboard */; };
 		F59624A91DD2782400EDD78C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59624A81DD2782400EDD78C /* Assets.xcassets */; };
 		F59624AC1DD2782400EDD78C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59624AA1DD2782400EDD78C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F56C9C9E1DF199840072E771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F56C9C991DF199840072E771 /* Toast-Swift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 151796E71BE68E4B004BA6E5;
+			remoteInfo = "Toast-Swift";
+		};
+		F56C9CA01DF199840072E771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F56C9C991DF199840072E771 /* Toast-Swift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2A37434E1CBFAF4B006A3BAB;
+			remoteInfo = ToastSwiftFramework;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		F55606741DF1C37C003EA862 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		F56C9C971DF1996A0072E771 /* Toast-Swift-master.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "Toast-Swift-master.zip"; path = "../../Downloads/Toast-Swift-master.zip"; sourceTree = "<group>"; };
+		F56C9C991DF199840072E771 /* Toast-Swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Toast-Swift.xcodeproj"; path = "../../Downloads/Toast-Swift-master/Toast-Swift.xcodeproj"; sourceTree = "<group>"; };
+		F570D2281DF1CF60005C1DD1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		F58294951DE38B1D0080044B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F58294981DE3943A0080044B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F596249E1DD2782400EDD78C /* Foody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59624A11DD2782400EDD78C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F59624A31DD2782400EDD78C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F59624A31DD2782400EDD78C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F59624A61DD2782400EDD78C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F59624A81DD2782400EDD78C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F59624AB1DD2782400EDD78C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,11 +63,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F56C9C9A1DF199840072E771 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F56C9C9F1DF199840072E771 /* Toast-Swift.app */,
+				F56C9CA11DF199840072E771 /* ToastSwiftFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F58294901DE38A470080044B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F58294951DE38B1D0080044B /* User.swift */,
+				F570D2281DF1CF60005C1DD1 /* Post.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F58294911DE38A4E0080044B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F55606741DF1C37C003EA862 /* PostTableViewCell.swift */,
+				F59624A31DD2782400EDD78C /* LoginViewController.swift */,
+				F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		F58294921DE38A630080044B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F59624A51DD2782400EDD78C /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F58294971DE394390080044B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F56C9C991DF199840072E771 /* Toast-Swift.xcodeproj */,
+				F56C9C971DF1996A0072E771 /* Toast-Swift-master.zip */,
+				F58294981DE3943A0080044B /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F59624951DD2782400EDD78C = {
 			isa = PBXGroup;
 			children = (
 				F59624A01DD2782400EDD78C /* Foody */,
 				F596249F1DD2782400EDD78C /* Products */,
+				F58294971DE394390080044B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,9 +129,10 @@
 		F59624A01DD2782400EDD78C /* Foody */ = {
 			isa = PBXGroup;
 			children = (
+				F58294921DE38A630080044B /* View */,
+				F58294911DE38A4E0080044B /* Controller */,
+				F58294901DE38A470080044B /* Model */,
 				F59624A11DD2782400EDD78C /* AppDelegate.swift */,
-				F59624A31DD2782400EDD78C /* ViewController.swift */,
-				F59624A51DD2782400EDD78C /* Main.storyboard */,
 				F59624A81DD2782400EDD78C /* Assets.xcassets */,
 				F59624AA1DD2782400EDD78C /* LaunchScreen.storyboard */,
 				F59624AD1DD2782400EDD78C /* Info.plist */,
@@ -111,12 +187,35 @@
 			mainGroup = F59624951DD2782400EDD78C;
 			productRefGroup = F596249F1DD2782400EDD78C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F56C9C9A1DF199840072E771 /* Products */;
+					ProjectRef = F56C9C991DF199840072E771 /* Toast-Swift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F596249D1DD2782400EDD78C /* Foody */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F56C9C9F1DF199840072E771 /* Toast-Swift.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Toast-Swift.app";
+			remoteRef = F56C9C9E1DF199840072E771 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F56C9CA11DF199840072E771 /* ToastSwiftFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ToastSwiftFramework.framework;
+			remoteRef = F56C9CA01DF199840072E771 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F596249C1DD2782400EDD78C /* Resources */ = {
@@ -136,8 +235,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F59624A41DD2782400EDD78C /* ViewController.swift in Sources */,
+				F58294961DE38B1D0080044B /* User.swift in Sources */,
+				F59624A41DD2782400EDD78C /* LoginViewController.swift in Sources */,
+				F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */,
+				F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */,
 				F59624A21DD2782400EDD78C /* AppDelegate.swift in Sources */,
+				F55606751DF1C37C003EA862 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +400,7 @@
 				F59624B21DD2782400EDD78C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
