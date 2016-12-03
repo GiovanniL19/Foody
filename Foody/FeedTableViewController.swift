@@ -21,6 +21,18 @@ class FeedTableViewController: UITableViewController {
         
         //Set up table UI
         tableSetup()
+        
+        //Create navigation bar add button with action
+        let userIconImage = UIImage(named: "UserIcon")!.withRenderingMode(UIImageRenderingMode.automatic)
+        let userButton = UIBarButtonItem(image: userIconImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(FeedTableViewController.goToUser))
+        
+        let loveIconImage = UIImage(named: "LoveIcon")!.withRenderingMode(UIImageRenderingMode.automatic)
+        let loveButton = UIBarButtonItem(image: loveIconImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(FeedTableViewController.goToYum))
+        
+        
+        //Add new button to right of navigation bar
+        self.navigationItem.rightBarButtonItem = userButton
+        self.navigationItem.leftBarButtonItem = loveButton
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,6 +75,15 @@ class FeedTableViewController: UITableViewController {
     }
     
     
+    //MARK: Actions
+    @IBAction func goToUser(){
+        
+    }
+    
+    @IBAction func goToYum(){
+        
+    }
+    
     // MARK: Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -101,7 +122,7 @@ class FeedTableViewController: UITableViewController {
             cell.postImage.image = image
             
             //Style the cell
-            cell.postImage.layer.cornerRadius = 5;
+            cell.postImage.layer.cornerRadius = 3;
             cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
             
             //Return the cell

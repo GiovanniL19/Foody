@@ -14,6 +14,8 @@
 		F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D2281DF1CF60005C1DD1 /* Post.swift */; };
 		F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */; };
 		F58294961DE38B1D0080044B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58294951DE38B1D0080044B /* User.swift */; };
+		F58C62511DF35CDF0087263F /* DifficultyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62501DF35CDF0087263F /* DifficultyControl.swift */; };
+		F58C62531DF363D70087263F /* TimeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62521DF363D70087263F /* TimeControl.swift */; };
 		F59624A21DD2782400EDD78C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59624A11DD2782400EDD78C /* AppDelegate.swift */; };
 		F59624A41DD2782400EDD78C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59624A31DD2782400EDD78C /* LoginViewController.swift */; };
 		F59624A71DD2782400EDD78C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59624A51DD2782400EDD78C /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		F58294951DE38B1D0080044B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F58294981DE3943A0080044B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F58C62501DF35CDF0087263F /* DifficultyControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyControl.swift; sourceTree = "<group>"; };
+		F58C62521DF363D70087263F /* TimeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeControl.swift; sourceTree = "<group>"; };
 		F596249E1DD2782400EDD78C /* Foody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59624A11DD2782400EDD78C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F59624A31DD2782400EDD78C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 				F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */,
 				F51AFC931DF2F9E000834C02 /* NewPostTableViewController.swift */,
 				F51AFC971DF30C5D00834C02 /* PostViewController.swift */,
+				F58C62501DF35CDF0087263F /* DifficultyControl.swift */,
+				F58C62521DF363D70087263F /* TimeControl.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -252,6 +258,8 @@
 				F51AFC941DF2F9E000834C02 /* NewPostTableViewController.swift in Sources */,
 				F59624A21DD2782400EDD78C /* AppDelegate.swift in Sources */,
 				F51AFC921DF2F1BD00834C02 /* InputUITextField.swift in Sources */,
+				F58C62531DF363D70087263F /* TimeControl.swift in Sources */,
+				F58C62511DF35CDF0087263F /* DifficultyControl.swift in Sources */,
 				F55606751DF1C37C003EA862 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

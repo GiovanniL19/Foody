@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewPostTableViewController: UITableViewController {
+class NewPostTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: Properties
     @IBOutlet weak var postTitle: UITextField!
     @IBOutlet weak var servings: UITextField!
@@ -21,7 +21,6 @@ class NewPostTableViewController: UITableViewController {
         
         //Create navigation bar add button with action
         let addButton = UIBarButtonItem(title: "ADD", style: UIBarButtonItemStyle.plain, target: self, action: #selector(NewPostTableViewController.addPost))
-        
         
         //Add new button to right of navigation bar
         self.navigationItem.rightBarButtonItem = addButton
@@ -47,12 +46,34 @@ class NewPostTableViewController: UITableViewController {
     }
     
     //MARK: Actions
-    
-    //When add has been clicked, this function is called
-    @IBAction func addPost(){
+    @IBAction func addImage(_ sender: Any) {
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library
+        let imagePickerController = UIImagePickerController()
+        
+        // Only allow photos to be picked, not taken
+        imagePickerController.sourceType = .photoLibrary
+        
+        imagePickerController.delegate = self
+        
+        
+        present(imagePickerController, animated: true, completion: nil)
         
     }
+    //When add has been clicked, this function is called
+    @IBAction func addPost(){
+        //TODO: Create post object and json to send to database
+    }
     
+    //MARK: UIImagePickerControllerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Dismiss the picker if the user canceled
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage //selected image
+        //TODO: Decode image and store as base64 in post object
+        dismiss(animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Table view data source

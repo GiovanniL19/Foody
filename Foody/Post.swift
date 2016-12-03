@@ -20,8 +20,10 @@ class Post: NSObject {
     var method : String = ""
     var ingredients = [String]()
     var date : String = ""
+    var time : Int = 0
+    var difficulty : Int = 0
     
-    //Initialise Post
+    // MARK: Initialization
     init(username: String, title: String, image: String, profilePicture: String, servings : Int, desc : String, method : String, ingredients : [String]){
         self.username = username
         self.title = title
