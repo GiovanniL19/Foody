@@ -1,23 +1,30 @@
 //
-//  FeedTableViewController.swift
+//  NewPostTableViewController.swift
 //  Foody
 //
-//  Created by Giovanni Lenguito on 02/12/2016.
+//  Created by Giovanni Lenguito on 03/12/2016.
 //  Copyright © 2016 Giovanni Lenguito. All rights reserved.
 //
 
 import UIKit
 
-class FeedTableViewController: UITableViewController {
+class NewPostTableViewController: UITableViewController {
     //MARK: Properties
-    var posts = [Post]()
+    @IBOutlet weak var postTitle: UITextField!
+    @IBOutlet weak var servings: UITextField!
+    @IBOutlet weak var postDescription: UITextField!
+    @IBOutlet weak var method: UITextView!
     
     //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Load the posts
-        loadPosts()
+        //Create navigation bar add button with action
+        let addButton = UIBarButtonItem(title: "ADD", style: UIBarButtonItemStyle.plain, target: self, action: #selector(NewPostTableViewController.addPost))
+        
+        
+        //Add new button to right of navigation bar
+        self.navigationItem.rightBarButtonItem = addButton
         
         //Set up table UI
         tableSetup()
@@ -39,63 +46,37 @@ class FeedTableViewController: UITableViewController {
         
     }
     
-    func loadPosts(){
-        //TODO: build array of objects from json api (Use delegates)
+    //MARK: Actions
+    
+    //When add has been clicked, this function is called
+    @IBAction func addPost(){
         
-        
-        //dummy post
-        let post = Post(username : "Giovanni Lenguito", title: "Get the family together with this dish", image : "", profilePicture: "", servings: 2, desc: "A romantic meal for 2", method: "You have to do blah blah blah", ingredients: ["1 of something", "another something"]);
-        //add dummy post to posts array
-        posts += [post]
     }
     
     
-    // MARK: Table view data source
+    /*
+    // MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count + 1//returns the total number of cells from the array count
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
 
-    
+     */
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if(indexPath.row == 0){
-            //Gets th estatic add new cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addNew", for: indexPath)
-            //Hide border
-            cell.separatorInset = UIEdgeInsets.zero
-            cell.layoutMargins = UIEdgeInsets.zero
-            return cell
-        }else{
-            let cellIdentifier = "PostTableViewCell"
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PostTableViewCell
-            
-            let post = posts[indexPath.row - 1] //gets post from array (minus 1 because of static row)
-            
-            //Set cell information
-            cell.postTitle.text = post.title
-            cell.username.text = post.username
-            cell.profileImage.image = post.getProfilePicture()
-            
-            
-            //Convert base64 image to UIImage
-            let encodedImage = post.image
-            let data = NSData(base64Encoded: encodedImage)
-            let image = UIImage(data: data as! Data)
-            
-            cell.postImage.image = image
-            
-            //Stype the cell
-            cell.postImage.layer.cornerRadius = 5;
-            cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
-            
-            //Return the cell
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
     }
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.
