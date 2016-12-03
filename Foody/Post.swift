@@ -19,6 +19,7 @@ class Post: NSObject {
     var desc : String = ""
     var method : String = ""
     var ingredients = [String]()
+    var date : String = ""
     
     //Initialise Post
     init(username: String, title: String, image: String, profilePicture: String, servings : Int, desc : String, method : String, ingredients : [String]){

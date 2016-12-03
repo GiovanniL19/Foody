@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F51AFC921DF2F1BD00834C02 /* InputUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51AFC911DF2F1BD00834C02 /* InputUITextField.swift */; };
 		F51AFC941DF2F9E000834C02 /* NewPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51AFC931DF2F9E000834C02 /* NewPostTableViewController.swift */; };
+		F51AFC981DF30C5D00834C02 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51AFC971DF30C5D00834C02 /* PostViewController.swift */; };
 		F55606751DF1C37C003EA862 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55606741DF1C37C003EA862 /* PostTableViewCell.swift */; };
 		F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D2281DF1CF60005C1DD1 /* Post.swift */; };
 		F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		F51AFC911DF2F1BD00834C02 /* InputUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputUITextField.swift; sourceTree = "<group>"; };
 		F51AFC931DF2F9E000834C02 /* NewPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostTableViewController.swift; sourceTree = "<group>"; };
+		F51AFC971DF30C5D00834C02 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		F55606741DF1C37C003EA862 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		F56C9C971DF1996A0072E771 /* Toast-Swift-master.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "Toast-Swift-master.zip"; path = "../../Downloads/Toast-Swift-master.zip"; sourceTree = "<group>"; };
 		F56C9C991DF199840072E771 /* Toast-Swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Toast-Swift.xcodeproj"; path = "../../Downloads/Toast-Swift-master/Toast-Swift.xcodeproj"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				F59624A31DD2782400EDD78C /* LoginViewController.swift */,
 				F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */,
 				F51AFC931DF2F9E000834C02 /* NewPostTableViewController.swift */,
+				F51AFC971DF30C5D00834C02 /* PostViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F51AFC981DF30C5D00834C02 /* PostViewController.swift in Sources */,
 				F58294961DE38B1D0080044B /* User.swift in Sources */,
 				F59624A41DD2782400EDD78C /* LoginViewController.swift in Sources */,
 				F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */,

@@ -23,6 +23,19 @@ class FeedTableViewController: UITableViewController {
         tableSetup()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowPost" {
+            let postDetailViewController = segue.destination as! PostViewController
+            
+            if let selectedPostCell = sender as? PostTableViewCell {
+                let indexPath = tableView.indexPath(for: selectedPostCell)!
+                let selectedPost = posts[indexPath.row - 1]
+                postDetailViewController.post = selectedPost
+            }
+        }
+    }
+
+    
     func tableSetup(){
         //Sets minimum row height for static table
         self.tableView.estimatedRowHeight = 38
@@ -87,7 +100,7 @@ class FeedTableViewController: UITableViewController {
             
             cell.postImage.image = image
             
-            //Stype the cell
+            //Style the cell
             cell.postImage.layer.cornerRadius = 5;
             cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
             
