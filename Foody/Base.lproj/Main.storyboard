@@ -313,12 +313,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="0.093857020547945202" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostTableViewCell" rowHeight="267" id="bll-QZ-Gou" customClass="PostTableViewCell" customModule="Foody" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="267"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bll-QZ-Gou" id="Vyc-kj-hMw">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="266"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="266.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T1X-8e-J0s">
@@ -350,12 +352,9 @@
                                             <color key="textColor" red="0.32671716370558379" green="0.32671716370558379" blue="0.32671716370558379" alpha="0.6599957191780822" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d0P-EU-qvN">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0P-EU-qvN">
                                             <rect key="frame" x="10" y="10" width="53" height="53"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="53" id="WYZ-Ly-JTm"/>
-                                                <constraint firstAttribute="width" constant="53" id="p7y-jc-xcL"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iV8-Ft-dIN">
                                             <rect key="frame" x="266" y="216" width="46" height="30"/>
@@ -369,6 +368,7 @@
                                             </state>
                                         </button>
                                     </subviews>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="iV8-Ft-dIN" firstAttribute="top" secondItem="T1X-8e-J0s" secondAttribute="bottom" constant="17" id="0WK-Xk-sTA"/>
                                         <constraint firstItem="T1X-8e-J0s" firstAttribute="leading" secondItem="Vyc-kj-hMw" secondAttribute="leading" id="1MK-Hx-nFp"/>
@@ -377,17 +377,16 @@
                                         <constraint firstItem="Rer-xu-c4s" firstAttribute="top" secondItem="4t6-Xf-t44" secondAttribute="bottom" constant="3" id="9Wh-vg-SjU"/>
                                         <constraint firstAttribute="trailing" secondItem="T1X-8e-J0s" secondAttribute="trailing" id="GS9-kr-etV"/>
                                         <constraint firstItem="4t6-Xf-t44" firstAttribute="top" secondItem="T1X-8e-J0s" secondAttribute="bottom" constant="8" id="MfK-41-5f3"/>
-                                        <constraint firstAttribute="trailing" secondItem="d0P-EU-qvN" secondAttribute="trailing" constant="257" id="OTA-4i-aSl"/>
-                                        <constraint firstItem="d0P-EU-qvN" firstAttribute="leading" secondItem="Vyc-kj-hMw" secondAttribute="leading" constant="10" id="aGk-lr-507"/>
                                         <constraint firstAttribute="bottom" secondItem="Rer-xu-c4s" secondAttribute="bottom" constant="14" id="b63-1v-wUt"/>
                                         <constraint firstItem="4t6-Xf-t44" firstAttribute="leading" secondItem="Vyc-kj-hMw" secondAttribute="leading" constant="8" id="eBX-Le-YP5"/>
                                         <constraint firstItem="Rer-xu-c4s" firstAttribute="leading" secondItem="Vyc-kj-hMw" secondAttribute="leading" constant="8" id="fy2-26-nKE"/>
                                         <constraint firstItem="T1X-8e-J0s" firstAttribute="top" secondItem="Vyc-kj-hMw" secondAttribute="top" constant="19" id="jSD-hP-BXP"/>
                                         <constraint firstAttribute="trailing" secondItem="4t6-Xf-t44" secondAttribute="trailing" constant="8" id="pam-Pl-nUj"/>
-                                        <constraint firstItem="d0P-EU-qvN" firstAttribute="top" secondItem="Vyc-kj-hMw" secondAttribute="top" constant="10" id="rna-cf-9UE"/>
                                         <constraint firstAttribute="trailing" secondItem="iV8-Ft-dIN" secondAttribute="trailing" constant="8" id="shw-fU-ccV"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="postImage" destination="T1X-8e-J0s" id="a7H-zP-ezb"/>
                                     <outlet property="postTitle" destination="4t6-Xf-t44" id="NAe-6z-XmH"/>
