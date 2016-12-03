@@ -18,14 +18,37 @@ class FeedTableViewController: UITableViewController {
         
         //Load the posts
         loadPosts()
+        
+        //Set up table UI
+        tableSetup()
+    }
+    
+    func tableSetup(){
+        //Sets minimum row height for static table
+        self.tableView.estimatedRowHeight = 38
+        
+        //Allows row height to change dynamicly
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        //Hide table seperator
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
+        //Hide navigation bar border
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
     }
     
     func loadPosts(){
+        //TODO: build array of objects from json api (Use delegates)
+        
+        
         //dummy post
         let post = Post(username : "Giovanni Lenguito", title: "Get the family together with this dish", image : "", profilePicture: "");
         //add dummy post to posts array
         posts += [post]
     }
+    
     
     // MARK: Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,27 +56,44 @@ class FeedTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return posts.count + 1//returns the total number of cells from the array count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "PostTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PostTableViewCell
-        
-        let post = posts[indexPath.row]
-        
-        cell.postTitle.text = post.title
-        cell.username.text = post.username
-        cell.profileImage.image = post.getProfilePicture()
-        
-        let encodedImage = post.image
-        let data = NSData(base64Encoded: encodedImage)
-        let image = UIImage(data: data as! Data)
-        
-        cell.postImage.image = image
-        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
-        return cell
+        if(indexPath.row == 0){
+            //Gets th estatic add new cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addNew", for: indexPath)
+            //Hide border
+            cell.separatorInset = UIEdgeInsets.zero
+            cell.layoutMargins = UIEdgeInsets.zero
+            return cell
+        }else{
+            let cellIdentifier = "PostTableViewCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PostTableViewCell
+            
+            let post = posts[indexPath.row - 1] //gets post from array (minus 1 because of static row)
+            
+            //Set cell information
+            cell.postTitle.text = post.title
+            cell.username.text = post.username
+            cell.profileImage.image = post.getProfilePicture()
+            
+            
+            //Convert base64 image to UIImage
+            let encodedImage = post.image
+            let data = NSData(base64Encoded: encodedImage)
+            let image = UIImage(data: data as! Data)
+            
+            cell.postImage.image = image
+            
+            //Stype the cell
+            cell.postImage.layer.cornerRadius = 5;
+            cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
+            
+            //Return the cell
+            return cell
+        }
     }
     
 

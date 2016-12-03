@@ -134,11 +134,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foody/FeedTableViewController.swift"
-            timestampString = "502388345.913953"
+            timestampString = "502460262.754878"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "FeedTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -172,22 +172,6 @@
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "getProfilePicture()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Foody/FeedTableViewController.swift"
-            timestampString = "502455840.495599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

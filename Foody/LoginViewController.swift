@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
                 if(self.username.text == username){
                     if(self.password.text == password){
                         message.text = "Success"
-                        let viewController:UITableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeedTableViewController") as UIViewController as! UITableViewController
+                        let viewController:UINavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FeedTableViewController") as UIViewController as! UINavigationController
                         self.present(viewController, animated: false, completion: nil)
                     }else{
                         message.text = "Incorrect Password"

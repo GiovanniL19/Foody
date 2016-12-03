@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F51AFC921DF2F1BD00834C02 /* InputUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51AFC911DF2F1BD00834C02 /* InputUITextField.swift */; };
 		F55606751DF1C37C003EA862 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55606741DF1C37C003EA862 /* PostTableViewCell.swift */; };
 		F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D2281DF1CF60005C1DD1 /* Post.swift */; };
 		F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F51AFC911DF2F1BD00834C02 /* InputUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputUITextField.swift; sourceTree = "<group>"; };
 		F55606741DF1C37C003EA862 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		F56C9C971DF1996A0072E771 /* Toast-Swift-master.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "Toast-Swift-master.zip"; path = "../../Downloads/Toast-Swift-master.zip"; sourceTree = "<group>"; };
 		F56C9C991DF199840072E771 /* Toast-Swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Toast-Swift.xcodeproj"; path = "../../Downloads/Toast-Swift-master/Toast-Swift.xcodeproj"; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		F58294911DE38A4E0080044B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F51AFC911DF2F1BD00834C02 /* InputUITextField.swift */,
 				F55606741DF1C37C003EA862 /* PostTableViewCell.swift */,
 				F59624A31DD2782400EDD78C /* LoginViewController.swift */,
 				F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */,
@@ -240,6 +243,7 @@
 				F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */,
 				F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */,
 				F59624A21DD2782400EDD78C /* AppDelegate.swift in Sources */,
+				F51AFC921DF2F1BD00834C02 /* InputUITextField.swift in Sources */,
 				F55606751DF1C37C003EA862 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
