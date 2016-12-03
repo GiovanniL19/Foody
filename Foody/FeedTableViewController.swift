@@ -50,8 +50,9 @@ class FeedTableViewController: UITableViewController {
         let encodedImage = post.image
         let data = NSData(base64Encoded: encodedImage)
         let image = UIImage(data: data as! Data)
-        cell.postImage.image = image
         
+        cell.postImage.image = image
+        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
         return cell
     }
     
