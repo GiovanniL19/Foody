@@ -164,10 +164,10 @@
             </objects>
             <point key="canvasLocation" x="916.875" y="136.26760563380282"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="Tur-sj-hQW">
             <objects>
-                <viewController id="GKM-to-ePx" sceneMemberID="viewController">
+                <viewController id="GKM-to-ePx" customClass="RegisterViewController" customModule="Foody" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hYX-s8-bhk"/>
                         <viewControllerLayoutGuide type="bottom" id="Fap-wg-dTE"/>
@@ -247,6 +247,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yxY-X8-Jxo"/>
+                                    <action selector="register:" destination="GKM-to-ePx" eventType="touchUpInside" id="YkO-CA-M8L"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover New Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZz-8o-zKW">
@@ -259,6 +260,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvx-uA-Uv5">
+                                <rect key="frame" x="16" y="494" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Profile Image">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addImage:" destination="GKM-to-ePx" eventType="touchUpInside" id="u4a-Y3-yWV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -289,6 +300,12 @@
                             <constraint firstItem="qoI-ni-5AZ" firstAttribute="top" secondItem="doe-1S-cbt" secondAttribute="bottom" constant="8" id="zsF-33-BoM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="BiJ-UH-4l2" id="fIU-kJ-P8V"/>
+                        <outlet property="fullName" destination="qoI-ni-5AZ" id="Eej-od-xYm"/>
+                        <outlet property="password" destination="qxM-E2-wu2" id="jCi-Ih-8cn"/>
+                        <outlet property="username" destination="doe-1S-cbt" id="KWL-fC-v9t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RvW-Qg-h5N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

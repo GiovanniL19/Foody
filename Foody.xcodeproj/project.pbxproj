@@ -15,6 +15,7 @@
 		F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */; };
 		F58294961DE38B1D0080044B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58294951DE38B1D0080044B /* User.swift */; };
 		F587F5B21DF45CBC00D5C3CB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587F5B11DF45CBC00D5C3CB /* UserService.swift */; };
+		F587F5B81DF47D2800D5C3CB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587F5B71DF47D2800D5C3CB /* RegisterViewController.swift */; };
 		F58C62511DF35CDF0087263F /* DifficultyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62501DF35CDF0087263F /* DifficultyControl.swift */; };
 		F58C62531DF363D70087263F /* TimeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62521DF363D70087263F /* TimeControl.swift */; };
 		F58C62551DF42FC10087263F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62541DF42FC10087263F /* AccountViewController.swift */; };
@@ -55,6 +56,7 @@
 		F58294951DE38B1D0080044B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F58294981DE3943A0080044B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F587F5B11DF45CBC00D5C3CB /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		F587F5B71DF47D2800D5C3CB /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F58C62501DF35CDF0087263F /* DifficultyControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyControl.swift; sourceTree = "<group>"; };
 		F58C62521DF363D70087263F /* TimeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeControl.swift; sourceTree = "<group>"; };
 		F58C62541DF42FC10087263F /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				F58C62501DF35CDF0087263F /* DifficultyControl.swift */,
 				F58C62521DF363D70087263F /* TimeControl.swift */,
 				F58C62541DF42FC10087263F /* AccountViewController.swift */,
+				F587F5B71DF47D2800D5C3CB /* RegisterViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				F58C62581DF4312A0087263F /* Data.xcdatamodeld in Sources */,
 				F58C62551DF42FC10087263F /* AccountViewController.swift in Sources */,
 				F59624A41DD2782400EDD78C /* LoginViewController.swift in Sources */,
+				F587F5B81DF47D2800D5C3CB /* RegisterViewController.swift in Sources */,
 				F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */,
 				F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */,
 				F51AFC941DF2F9E000834C02 /* NewPostTableViewController.swift in Sources */,
