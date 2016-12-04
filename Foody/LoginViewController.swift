@@ -98,6 +98,7 @@ class LoginViewController: UIViewController {
                              user.setValue(fullname, forKeyPath: "fullname")
                              user.setValue(email, forKeyPath: "email")
                              user.setValue(profilePicture, forKeyPath: "profilePicture")
+                             user.setValue(memberDate, forKeyPath: "memberDate")
                              */
 
                             
