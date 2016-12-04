@@ -57,7 +57,7 @@ class AccountViewController: UIViewController {
             let alert = UIAlertController(title: "SAVED", message: "Account settings saved", preferredStyle: UIAlertControllerStyle.alert)
             
             //add action to alert
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
             
             //Present alert to user
             self.present(alert, animated: true, completion: nil)
@@ -66,7 +66,7 @@ class AccountViewController: UIViewController {
             let alert = UIAlertController(title: "ERROR", message: "Was unable to log you out, please try again", preferredStyle: UIAlertControllerStyle.alert)
             
             //add action to alert
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
             
             //Present alert to user
             self.present(alert, animated: true, completion: nil)
@@ -103,7 +103,7 @@ class AccountViewController: UIViewController {
             let alert = UIAlertController(title: "ERROR", message: "Was unable to log you out, please try again", preferredStyle: UIAlertControllerStyle.alert)
             
             //add action to alert
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
             
             //Present alert to user
             self.present(alert, animated: true, completion: nil)
