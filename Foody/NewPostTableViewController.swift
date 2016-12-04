@@ -14,6 +14,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     @IBOutlet weak var servings: UITextField!
     @IBOutlet weak var postDescription: UITextField!
     @IBOutlet weak var method: UITextView!
+    @IBOutlet weak var ingredientOne: InputUITextField!
     
     //MARK: Functions
     override func viewDidLoad() {

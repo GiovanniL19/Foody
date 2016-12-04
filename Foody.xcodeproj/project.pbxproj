@@ -16,6 +16,8 @@
 		F58294961DE38B1D0080044B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58294951DE38B1D0080044B /* User.swift */; };
 		F58C62511DF35CDF0087263F /* DifficultyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62501DF35CDF0087263F /* DifficultyControl.swift */; };
 		F58C62531DF363D70087263F /* TimeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62521DF363D70087263F /* TimeControl.swift */; };
+		F58C62551DF42FC10087263F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62541DF42FC10087263F /* AccountViewController.swift */; };
+		F58C62581DF4312A0087263F /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F58C62561DF4312A0087263F /* Data.xcdatamodeld */; };
 		F59624A21DD2782400EDD78C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59624A11DD2782400EDD78C /* AppDelegate.swift */; };
 		F59624A41DD2782400EDD78C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59624A31DD2782400EDD78C /* LoginViewController.swift */; };
 		F59624A71DD2782400EDD78C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59624A51DD2782400EDD78C /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 		F58294981DE3943A0080044B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F58C62501DF35CDF0087263F /* DifficultyControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyControl.swift; sourceTree = "<group>"; };
 		F58C62521DF363D70087263F /* TimeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeControl.swift; sourceTree = "<group>"; };
+		F58C62541DF42FC10087263F /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		F58C62571DF4312A0087263F /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
 		F596249E1DD2782400EDD78C /* Foody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59624A11DD2782400EDD78C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F59624A31DD2782400EDD78C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				F58294951DE38B1D0080044B /* User.swift */,
+				F58C62561DF4312A0087263F /* Data.xcdatamodeld */,
 				F570D2281DF1CF60005C1DD1 /* Post.swift */,
 			);
 			name = Model;
@@ -102,6 +107,7 @@
 				F51AFC971DF30C5D00834C02 /* PostViewController.swift */,
 				F58C62501DF35CDF0087263F /* DifficultyControl.swift */,
 				F58C62521DF363D70087263F /* TimeControl.swift */,
+				F58C62541DF42FC10087263F /* AccountViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -252,6 +258,8 @@
 			files = (
 				F51AFC981DF30C5D00834C02 /* PostViewController.swift in Sources */,
 				F58294961DE38B1D0080044B /* User.swift in Sources */,
+				F58C62581DF4312A0087263F /* Data.xcdatamodeld in Sources */,
+				F58C62551DF42FC10087263F /* AccountViewController.swift in Sources */,
 				F59624A41DD2782400EDD78C /* LoginViewController.swift in Sources */,
 				F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */,
 				F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */,
@@ -423,6 +431,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F58C62561DF4312A0087263F /* Data.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F58C62571DF4312A0087263F /* Data.xcdatamodel */,
+			);
+			currentVersion = F58C62571DF4312A0087263F /* Data.xcdatamodel */;
+			path = Data.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F59624961DD2782400EDD78C /* Project object */;
 }

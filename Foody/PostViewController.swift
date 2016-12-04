@@ -16,6 +16,9 @@ class PostViewController: UIViewController {
     @IBOutlet weak var by: UILabel!
     @IBOutlet weak var serves: UILabel!
     @IBOutlet weak var postDescription: UILabel!
+    @IBOutlet weak var difficulty: DifficultyControl!
+    @IBOutlet weak var time: TimeControl!
+    
     var post: Post?
     
     override func viewDidLoad() {
@@ -27,11 +30,15 @@ class PostViewController: UIViewController {
             
             //Style profile picture
             profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2;
-            
+        
+            //Set the values from the post object
             postTitle.text = post.title
             by.text = post.username
             serves.text = String(post.servings)
             postDescription.text = post.desc
+            
+            difficulty.difficulty = post.difficulty
+            time.time = post.time
             
         }
     }

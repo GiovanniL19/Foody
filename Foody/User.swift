@@ -13,7 +13,9 @@ class User: NSObject {
     var fullname : String = ""
     var email : String = ""
     var password : String = ""
+    var profilePicture : String = ""
     
+    //MARK: Types
     
     //Initialise User
     init(username: String, fullname: String, email: String, password: String){

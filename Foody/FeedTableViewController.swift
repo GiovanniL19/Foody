@@ -22,17 +22,6 @@ class FeedTableViewController: UITableViewController {
         //Set up table UI
         tableSetup()
         
-        //Create navigation bar add button with action
-        let userIconImage = UIImage(named: "UserIcon")!.withRenderingMode(UIImageRenderingMode.automatic)
-        let userButton = UIBarButtonItem(image: userIconImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(FeedTableViewController.goToUser))
-        
-        let loveIconImage = UIImage(named: "LoveIcon")!.withRenderingMode(UIImageRenderingMode.automatic)
-        let loveButton = UIBarButtonItem(image: loveIconImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(FeedTableViewController.goToYum))
-        
-        
-        //Add new button to right of navigation bar
-        self.navigationItem.rightBarButtonItem = userButton
-        self.navigationItem.leftBarButtonItem = loveButton
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,19 +59,12 @@ class FeedTableViewController: UITableViewController {
         
         //dummy post
         let post = Post(username : "Giovanni Lenguito", title: "Get the family together with this dish", image : "", profilePicture: "", servings: 2, desc: "A romantic meal for 2", method: "You have to do blah blah blah", ingredients: ["1 of something", "another something"]);
+        post.difficulty = 3
+        post.time = 4
         //add dummy post to posts array
         posts += [post]
     }
     
-    
-    //MARK: Actions
-    @IBAction func goToUser(){
-        
-    }
-    
-    @IBAction func goToYum(){
-        
-    }
     
     // MARK: Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
