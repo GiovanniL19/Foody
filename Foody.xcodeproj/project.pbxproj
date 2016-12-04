@@ -14,6 +14,7 @@
 		F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D2281DF1CF60005C1DD1 /* Post.swift */; };
 		F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */; };
 		F58294961DE38B1D0080044B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58294951DE38B1D0080044B /* User.swift */; };
+		F587F5B21DF45CBC00D5C3CB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587F5B11DF45CBC00D5C3CB /* UserService.swift */; };
 		F58C62511DF35CDF0087263F /* DifficultyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62501DF35CDF0087263F /* DifficultyControl.swift */; };
 		F58C62531DF363D70087263F /* TimeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62521DF363D70087263F /* TimeControl.swift */; };
 		F58C62551DF42FC10087263F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62541DF42FC10087263F /* AccountViewController.swift */; };
@@ -53,6 +54,7 @@
 		F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		F58294951DE38B1D0080044B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F58294981DE3943A0080044B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F587F5B11DF45CBC00D5C3CB /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		F58C62501DF35CDF0087263F /* DifficultyControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyControl.swift; sourceTree = "<group>"; };
 		F58C62521DF363D70087263F /* TimeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeControl.swift; sourceTree = "<group>"; };
 		F58C62541DF42FC10087263F /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				F58294951DE38B1D0080044B /* User.swift */,
-				F58C62561DF4312A0087263F /* Data.xcdatamodeld */,
 				F570D2281DF1CF60005C1DD1 /* Post.swift */,
 			);
 			name = Model;
@@ -130,6 +131,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F587F5B01DF45CB100D5C3CB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F587F5B11DF45CBC00D5C3CB /* UserService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		F59624951DD2782400EDD78C = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +159,8 @@
 		F59624A01DD2782400EDD78C /* Foody */ = {
 			isa = PBXGroup;
 			children = (
+				F58C62561DF4312A0087263F /* Data.xcdatamodeld */,
+				F587F5B01DF45CB100D5C3CB /* Services */,
 				F58294921DE38A630080044B /* View */,
 				F58294911DE38A4E0080044B /* Controller */,
 				F58294901DE38A470080044B /* Model */,
@@ -256,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F587F5B21DF45CBC00D5C3CB /* UserService.swift in Sources */,
 				F51AFC981DF30C5D00834C02 /* PostViewController.swift in Sources */,
 				F58294961DE38B1D0080044B /* User.swift in Sources */,
 				F58C62581DF4312A0087263F /* Data.xcdatamodeld in Sources */,

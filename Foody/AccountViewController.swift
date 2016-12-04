@@ -22,6 +22,11 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
     
+    var account : User?
+    
+    //Create instance of UserService
+    let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+    
     
     //MARK: Functions
     override func viewDidLoad() {
@@ -40,86 +45,69 @@ class AccountViewController: UIViewController {
 
     }
     func save(){
-        //TODO: Do save here
+        //Save changes
+        account?.username = username.text
+        account?.password = password.text
+        account?.email = email.text
+        account?.fullname = fullName.text
+        account?.profilePicture = ""
+        
+        if(userService.update(updatedUser: account!)){
+            //Create alert
+            let alert = UIAlertController(title: "SAVED", message: "Account settings saved", preferredStyle: UIAlertControllerStyle.alert)
+            
+            //add action to alert
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            
+            //Present alert to user
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            //Create alert
+            let alert = UIAlertController(title: "ERROR", message: "Was unable to log you out, please try again", preferredStyle: UIAlertControllerStyle.alert)
+            
+            //add action to alert
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            
+            //Present alert to user
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func getAccount(){
-        //Declare context for core data
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let context = appDelegate.persistentContainer.viewContext
-        
-        //Declare fetch request
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Account")
-        
-        //Try and get accounts
-        do {
-            accounts = try context.fetch(fetchRequest)
-            
+        // Read all
+        let users : [User] = userService.getAll()
+        if(users.count == 1){
             //get first (and only) account in array
-            let account = accounts[0]
+            account = users[0]
             
             //get and set values
-            username.text = account.value(forKeyPath: "username") as? String
+            username.text = account?.username
+            email.text = account?.email
+            password.text = account?.password
+            fullName.text = account?.fullname
             
-            email.text = account.value(forKeyPath: "email") as? String
-            
-            password.text = account.value(forKeyPath: "password") as? String
-            
-            fullName.text = account.value(forKeyPath: "fullname") as? String
-            
-            
-        
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     
     //MARK: Actions
     @IBAction func logout(_ sender: UIButton) {
-        //Declare context for core data
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let context = appDelegate.persistentContainer.viewContext
-
-        
-        //Declare fetch request
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
-        
-        //Declare batch request
-        let deleteAllAccounts = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        do {
-            //Execute delete
-            try context.execute(deleteAllAccounts)
-            
+        if(userService.delete(id: (account?.objectID)!)){
             //Setup controller
             let viewController : UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
             
             //Goes to next view
             self.present(viewController, animated: true, completion: nil)
-
+        }else{
             
-        } catch let error as NSError {
-            print("Could not delete \(error), \(error.userInfo)")
+            //Create alert
+            let alert = UIAlertController(title: "ERROR", message: "Was unable to log you out, please try again", preferredStyle: UIAlertControllerStyle.alert)
+            
+            //add action to alert
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            
+            //Present alert to user
+            self.present(alert, animated: true, completion: nil)
         }
     }
-    
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

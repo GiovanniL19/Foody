@@ -7,21 +7,15 @@
 //
 
 import Foundation
-class User: NSObject {
+import CoreData
+
+public class User: NSManagedObject {
     //MARK: Properties
-    var username : String = ""
-    var fullname : String = ""
-    var email : String = ""
-    var password : String = ""
-    var profilePicture : String = ""
-    
-    //MARK: Types
-    
-    //Initialise User
-    init(username: String, fullname: String, email: String, password: String){
-        self.username = username
-        self.fullname = fullname
-        self.email = email
-        self.password = password
-    }
+    @NSManaged var username: String?
+    @NSManaged var fullname: String?
+    @NSManaged var email: String?
+    @NSManaged var password: String?
+    @NSManaged var profilePicture: String?
+    @NSManaged var memberDate: Date?
+    static let entityName = "User"
 }
