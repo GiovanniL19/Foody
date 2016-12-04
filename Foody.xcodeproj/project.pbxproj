@@ -159,11 +159,11 @@
 		F59624A01DD2782400EDD78C /* Foody */ = {
 			isa = PBXGroup;
 			children = (
-				F58C62561DF4312A0087263F /* Data.xcdatamodeld */,
 				F587F5B01DF45CB100D5C3CB /* Services */,
 				F58294921DE38A630080044B /* View */,
 				F58294911DE38A4E0080044B /* Controller */,
 				F58294901DE38A470080044B /* Model */,
+				F58C62561DF4312A0087263F /* Data.xcdatamodeld */,
 				F59624A11DD2782400EDD78C /* AppDelegate.swift */,
 				F59624A81DD2782400EDD78C /* Assets.xcassets */,
 				F59624AA1DD2782400EDD78C /* LaunchScreen.storyboard */,
