@@ -102,7 +102,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="GKM-to-ePx" kind="show" id="gLU-AM-gdh"/>
+                                    <segue destination="GKM-to-ePx" kind="show" identifier="" id="gLU-AM-gdh"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Discover New Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QH3-Kk-dRW">
@@ -221,7 +221,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOODY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZt-UX-WJv">
                                 <rect key="frame" x="16" y="149" width="288" height="53"/>
@@ -303,6 +303,7 @@
                     <connections>
                         <outlet property="email" destination="BiJ-UH-4l2" id="fIU-kJ-P8V"/>
                         <outlet property="fullName" destination="qoI-ni-5AZ" id="Eej-od-xYm"/>
+                        <outlet property="message" destination="wZz-8o-zKW" id="LCH-HF-4Gg"/>
                         <outlet property="password" destination="qxM-E2-wu2" id="jCi-Ih-8cn"/>
                         <outlet property="username" destination="doe-1S-cbt" id="KWL-fC-v9t"/>
                     </connections>
@@ -517,7 +518,7 @@
                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member since ... | Lives in London" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5D-B1-nwf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard User Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5D-B1-nwf">
                                 <rect key="frame" x="61" y="110" width="198" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="198" id="epQ-Vn-OtB"/>
@@ -658,7 +659,7 @@
                                     <constraint firstAttribute="trailing" secondItem="FsM-f5-pOM" secondAttribute="trailing" constant="8" id="zav-PQ-ucK"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S3H-JA-8ez">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultUser" translatesAutoresizingMaskIntoConstraints="NO" id="S3H-JA-8ez">
                                 <rect key="frame" x="119" y="5" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="S3H-JA-8ez" secondAttribute="height" multiplier="1:1" id="aNf-Bj-3u1"/>
@@ -1394,6 +1395,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DefaultUser" width="256" height="256"/>
         <image name="LoveIcon" width="21" height="21"/>
         <image name="UserIcon" width="21" height="21"/>
         <image name="loginBack" width="375" height="667"/>

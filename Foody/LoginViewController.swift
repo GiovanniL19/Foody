@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
         if(self.username.text != "" || self.password.text != ""){
             if(self.username.text == username){
                 if(self.password.text == password){
-                    //Create new user to save in core data
+                    //Create user to save in core data
                     let user = userService.create(username: username, fullname: "Giovanni Lenguito", email: "giovanni16.gl@gmail.com", password: password, profilePicture: "")
                 
                     if(user != nil){

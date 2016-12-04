@@ -86,6 +86,12 @@ class AccountViewController: UIViewController {
             password.text = account?.password
             fullName.text = account?.fullname
             
+            if(account?.profilePicture != ""){
+                let encodedImage = account?.profilePicture
+                let data = NSData(base64Encoded: encodedImage!)
+                let image = UIImage(data: data as! Data)
+                profilePicture.image = image
+            }
         }
     }
     
