@@ -17,9 +17,16 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     @IBOutlet weak var ingredientsScrollView: UIView!
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var difficultyControl: DifficultyControl!
+    @IBOutlet weak var timeControl: TimeControl!
     
     var ingredientCount : Int = 0
     var selectedImage : String = ""
+    var account : User?
+    
+    //Create instance of UserService
+    let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+    
     
     //MARK: Functions
     override func viewDidLoad() {
@@ -35,7 +42,20 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         tableSetup()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44;
+        
+        //Get account
+        getAccount()
     }
+    
+    func getAccount(){
+        // Read all
+        let users : [User] = userService.getAll()
+        if(users.count == 1){
+            //get first (and only) account in array
+            account = users[0]
+        }
+    }
+
     
     func tableSetup(){
         //Sets minimum row height for static table
@@ -69,7 +89,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         }
         
         //set placeholder text
-        textField.placeholder = "Ingredient " + String(ingredientCount) +  "..."
+        textField.placeholder = "Ingredient " + String(ingredientCount + 1) +  "..."
         //incerement number of ingredients added
         ingredientCount += 1
         
@@ -82,6 +102,10 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         //set new height of view to allow scroll
         let newHeight : Int = 50 + Int(yAxis)
         viewHeight.constant =  CGFloat(newHeight)
+        
+        //Scroll to bottom of scroll view
+        let bottomOffset = CGPoint(x: 0, y: CGFloat(newHeight) - scrollView.bounds.size.height)
+        scrollView.setContentOffset(bottomOffset, animated: true)
     }
     
     @IBAction func addImage(_ sender: Any) {
@@ -110,12 +134,35 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
             }
         }
         
-        //Make jsonobject
+        //Create URL request
+        var request = URLRequest(url: URL(string: "http://localhost:3002/posts")!)
         
+        //Set content type
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
-        //Make post request
+        //Set request method
+        request.httpMethod = "POST"
         
+        //Create dictionary
+        let dictionary : [String : Any] = ["title": postTitle.text, "username": account?.username, "profilePicture": account?.profilePicture, "image": selectedImage, "desc": self.postDescription.text, "servings": servings.text, "method": method.text, "ingredients": ingredients, "difficulty": String(difficultyControl.difficulty), "time": String(timeControl.time)]
+    
+        //Add json to body
+        request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
         
+        //start of task
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            //get response code
+            let httpStatus = response as? HTTPURLResponse
+            
+            if (httpStatus?.statusCode != 201) {  //Check for http errors
+                print("response = \(response)")
+                print("Post should return status code 201. \(httpStatus?.statusCode) was returned")
+            }else{
+                //Get response
+                
+            }
+        }
+        task.resume()
         
     }
     

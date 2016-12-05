@@ -1187,12 +1187,14 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="difficultyControl" destination="TaL-WY-rdU" id="bAp-dL-AlF"/>
                         <outlet property="ingredientsScrollView" destination="3As-D3-0MJ" id="HlD-6y-a7Y"/>
                         <outlet property="method" destination="RT8-kc-uOb" id="8rx-Lw-7CS"/>
                         <outlet property="postDescription" destination="ex4-s9-rHx" id="20b-gZ-wtB"/>
                         <outlet property="postTitle" destination="Fz8-nc-1xk" id="pRg-dW-fSE"/>
                         <outlet property="scrollView" destination="3cV-BA-R6d" id="qyr-jd-Npy"/>
                         <outlet property="servings" destination="TEU-HB-cBm" id="9nw-t3-Aqd"/>
+                        <outlet property="timeControl" destination="xUC-QC-pKV" id="vDs-ge-mCD"/>
                         <outlet property="viewHeight" destination="6Kr-ej-4Oe" id="1vb-BF-Lc5"/>
                     </connections>
                 </tableViewController>

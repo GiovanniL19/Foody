@@ -41,7 +41,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         //Create json via dictionary
         let dictionary = ["username": username.text, "image": String(selectedImage), "fullname": fullName.text, "email": email.text, "password": password.text]
         
-        //Sdd json to body
+        //Add json to body
         request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
 
         
