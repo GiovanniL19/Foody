@@ -159,7 +159,12 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
                 print("Post should return status code 201. \(httpStatus?.statusCode) was returned")
             }else{
                 //Get response
-                
+                //Go back to main thread and perferom a segue to login
+                DispatchQueue.main.async {
+                    //Goes back
+                    self.navigationController?.popViewController(animated: true)
+                }
+
             }
         }
         task.resume()

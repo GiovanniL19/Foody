@@ -1196,9 +1196,11 @@
                         <outlet property="servings" destination="TEU-HB-cBm" id="9nw-t3-Aqd"/>
                         <outlet property="timeControl" destination="xUC-QC-pKV" id="vDs-ge-mCD"/>
                         <outlet property="viewHeight" destination="6Kr-ej-4Oe" id="1vb-BF-Lc5"/>
+                        <segue destination="6Ft-Pr-2Jd" kind="unwind" identifier="Unwind" unwindAction="unwindToViewControllerWithSegue:" id="12f-gN-MVg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qbg-Zs-O0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6Ft-Pr-2Jd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3982.5" y="-100.35211267605634"/>
         </scene>
