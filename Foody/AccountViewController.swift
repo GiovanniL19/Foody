@@ -44,6 +44,12 @@ class AccountViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = saveBtn
 
     }
+    
+    override func viewDidLayoutSubviews() {
+        //Make profile picture round
+        profilePicture.layer.cornerRadius = profilePicture.frame.height/2
+    }
+    
     func save(){
         //Save changes
         account?.username = username.text

@@ -14,7 +14,12 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     @IBOutlet weak var servings: UITextField!
     @IBOutlet weak var postDescription: UITextField!
     @IBOutlet weak var method: UITextView!
-    @IBOutlet weak var ingredientOne: InputUITextField!
+    @IBOutlet weak var ingredientsScrollView: UIView!
+    @IBOutlet weak var viewHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var ingredientCount : Int = 0
+    var selectedImage : String = ""
     
     //MARK: Functions
     override func viewDidLoad() {
@@ -28,6 +33,8 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         
         //Set up table UI
         tableSetup()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44;
     }
     
     func tableSetup(){
@@ -47,6 +54,36 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     }
     
     //MARK: Actions
+    @IBAction func addIngredient(_ sender: UIButton) {
+        //Set y position for new input field
+        let yAxis : Double = 50.00 * Double(ingredientCount)
+        
+        //declare new text field
+        let textField: UITextField
+        
+        //create new text field
+        if(ingredientCount == 0){
+            textField = UITextField(frame: CGRect(x: 10, y: 0, width: 200.00, height: 40.00));
+        }else{
+            textField = UITextField(frame: CGRect(x: 10, y: yAxis, width: 200.00, height: 40.00));
+        }
+        
+        //set placeholder text
+        textField.placeholder = "Ingredient " + String(ingredientCount) +  "..."
+        //incerement number of ingredients added
+        ingredientCount += 1
+        
+        //give input field a tag
+        textField.tag = 0000 + ingredientCount
+        
+        //add textfield to view
+        self.ingredientsScrollView.addSubview(textField)
+        
+        //set new height of view to allow scroll
+        let newHeight : Int = 50 + Int(yAxis)
+        viewHeight.constant =  CGFloat(newHeight)
+    }
+    
     @IBAction func addImage(_ sender: Any) {
         // UIImagePickerController is a view controller that lets a user pick media from their photo library
         let imagePickerController = UIImagePickerController()
@@ -62,7 +99,24 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     }
     //When add has been clicked, this function is called
     @IBAction func addPost(){
-        //TODO: Create post object and json to send to database
+        var ingredients : [String] = []
+        
+        //Get ingredients
+        for i in 0...ingredientCount{
+            //check if field exists
+            if let textField = self.view.viewWithTag(0000 + i) as? UITextField {
+                //add ingredient to array
+                ingredients.append(textField.text!)
+            }
+        }
+        
+        //Make jsonobject
+        
+        
+        //Make post request
+        
+        
+        
     }
     
     //MARK: UIImagePickerControllerDelegate
@@ -71,78 +125,14 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         dismiss(animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage //selected image
-        //TODO: Decode image and store as base64 in post object
+        //Get image
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage //selected image
+        
+        //Encode image to base64
+        //Convert imgage to NSData
+        let pictureData = UIImagePNGRepresentation(image)
+        
+        selectedImage = (pictureData?.base64EncodedString(options: []))!
         dismiss(animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-     */
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
