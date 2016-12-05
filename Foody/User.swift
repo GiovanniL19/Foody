@@ -16,6 +16,8 @@ public class User: NSManagedObject {
     @NSManaged var email: String?
     @NSManaged var password: String?
     @NSManaged var profilePicture: String?
-    @NSManaged var memberDate: Date?
+    @NSManaged var memberDate: String?
+    @NSManaged var id: String?
+    
     static let entityName = "User"
 }

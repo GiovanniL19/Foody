@@ -93,7 +93,6 @@
 		F58294901DE38A470080044B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F587F5B91DF4BEA200D5C3CB /* Assets.xcassets */,
 				F58294951DE38B1D0080044B /* User.swift */,
 				F570D2281DF1CF60005C1DD1 /* Post.swift */,
 			);
@@ -169,6 +168,7 @@
 				F58294901DE38A470080044B /* Model */,
 				F58C62561DF4312A0087263F /* Data.xcdatamodeld */,
 				F59624A11DD2782400EDD78C /* AppDelegate.swift */,
+				F587F5B91DF4BEA200D5C3CB /* Assets.xcassets */,
 				F59624AA1DD2782400EDD78C /* LaunchScreen.storyboard */,
 				F59624AD1DD2782400EDD78C /* Info.plist */,
 			);

@@ -29,40 +29,51 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     
     //MARK: Actions
     @IBAction func register(_ sender: Any) {
-        //create URL request
+        //Create URL request
         var request = URLRequest(url: URL(string: "http://localhost:3002/users")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
-        //set request method
+        //Set request method
         request.httpMethod = "POST"
         
+        //Create json via dictionary
         let dictionary = ["username": username.text, "image": String(selectedImage), "fullname": fullName.text, "email": email.text, "password": password.text]
+        
+        //Sdd json to body
         request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
 
         
         //start of task
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else { //Check for network error
-                print("error=\(error)")
-                return
-            }
+            //get response code
+            let httpStatus = response as? HTTPURLResponse
             
-            let httpStatus = response as! HTTPURLResponse
-            
-            if (httpStatus.statusCode != 201) {  //Check for http errors
+            if (httpStatus?.statusCode != 201) {  //Check for http errors
                 print("response = \(response)")
-                print("Post should return status code 201. \(httpStatus.statusCode) was returned")
+                print("Post should return status code 201. \(httpStatus?.statusCode) was returned")
+                //Go back to main thread and perferom a segue to login
+                DispatchQueue.main.async {
+                    self.message.text = "There was an error"
+                }
             }else{
                 //Get response
-                //let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
+                let jsonResponse = try? JSONSerialization.jsonObject(with: data!, options: [])  as! [String:AnyObject]
                 
-                //Got back to main thread and perferom a segue to login
+                //get user object from response
+                let user = jsonResponse?["user"] as! [String:Any]
+                
+                //get values from user json object
+                let dateSince = user["memberDate"] as! String
+                let userID = user["id"] as! String
+                
+                //Go back to main thread and perferom a segue to login
                 DispatchQueue.main.async {
                     //User will be logged into their account
                     //Create new user to save in core data
-                    let user = self.userService.create(username: self.username.text!, fullname: self.fullName.text!, email: self.email.text!, password: self.password.text!, profilePicture: self.selectedImage)
+                    
+                    let user = self.userService.create(username: self.username.text!, fullname: self.fullName.text!, email: self.email.text!, password: self.password.text!, profilePicture: self.selectedImage, memberDate: dateSince, id: userID)
                     
                     if(user != nil){
                         //Message success to user

@@ -18,7 +18,7 @@ class UserService{
     }
     
     //Creates new user
-    func create(username: String, fullname: String, email: String, password: String, profilePicture: String) -> User? {
+    func create(username: String, fullname: String, email: String, password: String, profilePicture: String, memberDate: String, id: String) -> User? {
         
         //Declare new user object
         let newUser = NSEntityDescription.insertNewObject(forEntityName: User.entityName, into: context) as! User
@@ -29,9 +29,8 @@ class UserService{
         newUser.email = email
         newUser.password = password
         newUser.profilePicture = profilePicture
-        
-        //CALCULATE DATE
-        newUser.memberDate = NSDate() as Date
+        newUser.memberDate = memberDate
+        newUser.id = id
         
         //Save changes
         if(saveChanges()){
