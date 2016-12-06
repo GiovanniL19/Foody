@@ -154,7 +154,11 @@ class FeedTableViewController: UITableViewController {
             //Set cell information
             cell.postTitle.text = post.title
             cell.username.text = post.username
-            cell.profileImage.image = post.getProfilePicture()
+            
+            if(!post.profilePicture.isEmpty){
+                cell.profileImage.image = post.getProfilePicture()
+            }
+            
             cell.postImage.image = post.getImage()
             
             //Style the cell
