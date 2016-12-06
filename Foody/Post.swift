@@ -18,7 +18,7 @@ class Post: NSObject {
     var servings : Int = 0
     var desc : String = ""
     var method : String = ""
-    var ingredients = [String]()
+    var ingredients : [String] = []
     var dateMade : Int = 0
     var time : Int = 0
     var difficulty : Int = 0
