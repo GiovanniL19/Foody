@@ -10,13 +10,13 @@
 		F51AFC921DF2F1BD00834C02 /* InputUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51AFC911DF2F1BD00834C02 /* InputUITextField.swift */; };
 		F51AFC941DF2F9E000834C02 /* NewPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51AFC931DF2F9E000834C02 /* NewPostTableViewController.swift */; };
 		F51AFC981DF30C5D00834C02 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51AFC971DF30C5D00834C02 /* PostViewController.swift */; };
+		F54D19A91DF7701600E23349 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F54D19A81DF7701600E23349 /* Assets.xcassets */; };
 		F55606751DF1C37C003EA862 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55606741DF1C37C003EA862 /* PostTableViewCell.swift */; };
 		F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D2281DF1CF60005C1DD1 /* Post.swift */; };
 		F570D22B1DF1D2AB005C1DD1 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */; };
 		F58294961DE38B1D0080044B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58294951DE38B1D0080044B /* User.swift */; };
 		F587F5B21DF45CBC00D5C3CB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587F5B11DF45CBC00D5C3CB /* UserService.swift */; };
 		F587F5B81DF47D2800D5C3CB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F587F5B71DF47D2800D5C3CB /* RegisterViewController.swift */; };
-		F587F5BA1DF4BEA200D5C3CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F587F5B91DF4BEA200D5C3CB /* Assets.xcassets */; };
 		F58C62511DF35CDF0087263F /* DifficultyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62501DF35CDF0087263F /* DifficultyControl.swift */; };
 		F58C62531DF363D70087263F /* TimeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62521DF363D70087263F /* TimeControl.swift */; };
 		F58C62551DF42FC10087263F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C62541DF42FC10087263F /* AccountViewController.swift */; };
@@ -48,6 +48,7 @@
 		F51AFC911DF2F1BD00834C02 /* InputUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputUITextField.swift; sourceTree = "<group>"; };
 		F51AFC931DF2F9E000834C02 /* NewPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostTableViewController.swift; sourceTree = "<group>"; };
 		F51AFC971DF30C5D00834C02 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		F54D19A81DF7701600E23349 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F55606741DF1C37C003EA862 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		F56C9C971DF1996A0072E771 /* Toast-Swift-master.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "Toast-Swift-master.zip"; path = "../../Downloads/Toast-Swift-master.zip"; sourceTree = "<group>"; };
 		F56C9C991DF199840072E771 /* Toast-Swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Toast-Swift.xcodeproj"; path = "../../Downloads/Toast-Swift-master/Toast-Swift.xcodeproj"; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		F58294981DE3943A0080044B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F587F5B11DF45CBC00D5C3CB /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		F587F5B71DF47D2800D5C3CB /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		F587F5B91DF4BEA200D5C3CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		F58C62501DF35CDF0087263F /* DifficultyControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyControl.swift; sourceTree = "<group>"; };
 		F58C62521DF363D70087263F /* TimeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeControl.swift; sourceTree = "<group>"; };
 		F58C62541DF42FC10087263F /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				F58294901DE38A470080044B /* Model */,
 				F58C62561DF4312A0087263F /* Data.xcdatamodeld */,
 				F59624A11DD2782400EDD78C /* AppDelegate.swift */,
-				F587F5B91DF4BEA200D5C3CB /* Assets.xcassets */,
+				F54D19A81DF7701600E23349 /* Assets.xcassets */,
 				F59624AA1DD2782400EDD78C /* LaunchScreen.storyboard */,
 				F59624AD1DD2782400EDD78C /* Info.plist */,
 			);
@@ -258,7 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F59624AC1DD2782400EDD78C /* LaunchScreen.storyboard in Resources */,
-				F587F5BA1DF4BEA200D5C3CB /* Assets.xcassets in Resources */,
+				F54D19A91DF7701600E23349 /* Assets.xcassets in Resources */,
 				F59624A71DD2782400EDD78C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
