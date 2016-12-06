@@ -27,8 +27,8 @@ class Post: NSObject {
     init(username: String, title: String, image: String, profilePicture: String, servings : Int, desc : String, method : String, ingredients : [String]){
         self.username = username
         self.title = title
-        self.image = ""
-        self.profilePicture = ""
+        self.image = image
+        self.profilePicture = profilePicture
         self.servings = servings
         self.desc = desc
         self.method = method
@@ -36,7 +36,7 @@ class Post: NSObject {
     }
     
     func getProfilePicture() -> (UIImage?){
-        if (profilePicture != ""){
+        if (!profilePicture.isEmpty){
             let encodedImage = self.profilePicture
             let data = NSData(base64Encoded: encodedImage)
             let image = UIImage(data: data as! Data)
@@ -47,7 +47,7 @@ class Post: NSObject {
     }
     
     func getImage() -> (UIImage?){
-        if(image != ""){
+        if (!image.isEmpty){
             let encodedImage = self.image
             let data = NSData(base64Encoded: encodedImage)
             let image = UIImage(data: data as! Data)

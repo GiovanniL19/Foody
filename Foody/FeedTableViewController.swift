@@ -16,12 +16,86 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setup talbe
+        self.tableSetup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         //Load the posts
-        loadPosts()
+        getAllPosts()
+    }
+    
+    func getAllPosts(){
+        //Empty posts
+        posts = []
+        //Create URL request
+        var request = URLRequest(url: URL(string: "http://localhost:3002/posts")!)
         
-        //Set up table UI
-        tableSetup()
+        //Set content type
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
+        //Set request method
+        request.httpMethod = "GET"
+        
+        //start of task
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            //get response code
+            let httpStatus = response as! HTTPURLResponse
+            
+            if (httpStatus.statusCode != 200) {  //Check for http errors
+                print("response = \(response)")
+                print("GET should return status code 200. \(httpStatus.statusCode) was returned")
+                if(httpStatus.statusCode == 404){
+                    //Go back to main thread and perferom a segue to login
+                    DispatchQueue.main.async {
+                        //Create alert
+                        let alert = UIAlertController(title: "ERROR", message: "Error getting posts", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        //add action to alert
+                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                        
+                        //Present alert to user
+                        self.present(alert, animated: true, completion: nil)
+
+                    }
+                }
+            }else{
+                //Get response
+                let jsonResponse = try? JSONSerialization.jsonObject(with: data!, options: [])  as! [String:AnyObject]
+                
+                //get user object from response
+                let postsJson = jsonResponse?["posts"]
+                
+                //Loop through json posts
+                for post in postsJson as! [Dictionary<String, AnyObject>] {
+                    let postTitle = post["title"] as! String
+                    let servings = post["servings"] as! String
+                    let postDescription = post["desc"] as! String
+                    let method = post["method"] as! String
+                    let ingredients = post["ingredients"] as! [String]
+                    let difficulty = post["difficulty"] as! String
+                    let time = post["time"] as! String
+                    let image = post["image"] as! String
+                    let profilePicture = post["profilePicture"] as! String
+                    let username = post["username"] as! String
+                    
+                    let post = Post(username : username, title: postTitle, image : image, profilePicture: profilePicture, servings: Int(servings)!, desc: postDescription, method: method, ingredients: ingredients);
+                    post.difficulty = Int(difficulty)!
+                    post.time = Int(time)!
+                    
+                    //add post to array
+                    self.posts += [post]
+                }
+                
+                //Update table with data
+                DispatchQueue.main.async{
+                    self.tableView.reloadData()
+                }
+
+            }
+            
+        }
+        task.resume()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,19 +127,6 @@ class FeedTableViewController: UITableViewController {
         
     }
     
-    func loadPosts(){
-        //TODO: build array of objects from json api (Use delegates)
-        
-        
-        //dummy post
-        let post = Post(username : "Giovanni Lenguito", title: "Get the family together with this dish", image : "", profilePicture: "", servings: 2, desc: "A romantic meal for 2", method: "You have to do blah blah blah", ingredients: ["1 of something", "another something"]);
-        post.difficulty = 3
-        post.time = 4
-        //add dummy post to posts array
-        posts += [post]
-    }
-    
-    
     // MARK: Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -94,14 +155,7 @@ class FeedTableViewController: UITableViewController {
             cell.postTitle.text = post.title
             cell.username.text = post.username
             cell.profileImage.image = post.getProfilePicture()
-            
-            
-            //Convert base64 image to UIImage
-            let encodedImage = post.image
-            let data = NSData(base64Encoded: encodedImage)
-            let image = UIImage(data: data as! Data)
-            
-            cell.postImage.image = image
+            cell.postImage.image = post.getImage()
             
             //Style the cell
             cell.postImage.layer.cornerRadius = 3;

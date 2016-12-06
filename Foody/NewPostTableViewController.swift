@@ -130,7 +130,9 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
             //check if field exists
             if let textField = self.view.viewWithTag(0000 + i) as? UITextField {
                 //add ingredient to array
-                ingredients.append(textField.text!)
+                if(!textField.text!.isEmpty){
+                    ingredients.append(textField.text!)
+                }
             }
         }
         
@@ -176,15 +178,16 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         // Dismiss the picker if the user canceled
         dismiss(animated: true, completion: nil)
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //Get image
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage //selected image
         
         //Encode image to base64
         //Convert imgage to NSData
-        let pictureData = UIImagePNGRepresentation(image)
+        let pictureData = UIImageJPEGRepresentation(image, 10.0)
         
-        selectedImage = (pictureData?.base64EncodedString(options: []))!
+        selectedImage = (pictureData?.base64EncodedString())!
         dismiss(animated: true, completion: nil)
     }
 }

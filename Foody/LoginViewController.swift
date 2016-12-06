@@ -75,7 +75,7 @@ class LoginViewController: UIViewController {
                 
                 if (httpStatus.statusCode != 200) {  //Check for http errors
                     print("response = \(response)")
-                    print("Post should return status code 200. \(httpStatus.statusCode) was returned")
+                    print("GET should return status code 200. \(httpStatus.statusCode) was returned")
                     if(httpStatus.statusCode == 404){
                         //Go back to main thread and perferom a segue to login
                         DispatchQueue.main.async {
