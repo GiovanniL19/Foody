@@ -22,7 +22,7 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //Load the posts
+        //start to load the posts
         getAllPosts()
     }
     

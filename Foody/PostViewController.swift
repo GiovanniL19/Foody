@@ -33,10 +33,33 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if(getAccount()){
+            populateView()
+        }else{
+            //Setup alert
+            let alert = UIAlertController(title: "ERROR", message: "There was an error getting the user", preferredStyle: UIAlertControllerStyle.alert)
+            //Add action to alert
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            
+            //Present alert to user
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    //MARK: Functions
+    func getAccount() -> Bool{
         //Read all users
         let users : [User] = userService.getAll()
-        //Get first user
-        account = users[0]
+        if(users.count > 0){
+            //Get first user
+            account = users[0]
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func populateView(){
         if let post = post {
             if(post.username == account?.username){
                 deleteBtn.isHidden = false
@@ -48,7 +71,7 @@ class PostViewController: UIViewController {
             
             //Style profile picture
             profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2;
-        
+            
             //Set the values from the post object
             postTitle.text = post.title
             by.text = post.username
@@ -85,7 +108,7 @@ class PostViewController: UIViewController {
                     label.font = label.font.withSize(14)
                     label.textColor = UIColor.darkGray
                     
-
+                    
                 }else{
                     label = UILabel(frame: CGRect(x: 5, y: yAxis, width: 200.00, height: 20.00));
                     //set text and style
@@ -93,24 +116,23 @@ class PostViewController: UIViewController {
                     label.font = label.font.withSize(13)
                     label.textColor = UIColor.darkGray
                     
-
+                    
                 }
-
+                
                 //add label to view
                 self.ingredientsView.addSubview(label)
                 
                 //set new height of view to allow scroll
                 let newHeight : Int = 25 + Int(yAxis)
                 ingredientHeightContraint.constant =  CGFloat(newHeight)
-
+                
             }
- 
+            
         }
     }
-
+    
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {}
-    
     
     //MARK: Actions
     @IBAction func deletePost(_ sender: Any) {

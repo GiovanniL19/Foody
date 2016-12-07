@@ -34,10 +34,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //When view has loaded, check if user is logged in
-        checkLogin()
+        checkLoginSession()
     }
     
-    func checkLogin(){
+    func checkLoginSession(){
         // Read all
         let users : [User] = userService.getAll()
         if(users.count == 1){
@@ -85,6 +85,7 @@ class LoginViewController: UIViewController {
                         //Go back to main thread and perferom a segue to login
                         DispatchQueue.main.async {
                             self.message.text = "Incorrect credentials"
+                            
                         }
                     }
                 }else{

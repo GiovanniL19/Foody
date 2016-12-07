@@ -39,6 +39,24 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Get account
+        if(getAccount()){
+            //setupView
+            setupView()
+        }else{
+            //Setup alert
+            let alert = UIAlertController(title: "ERROR", message: "There was an error getting the user", preferredStyle: UIAlertControllerStyle.alert)
+            //Add action to alert
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            
+            //Present alert to user
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    //MARK: Functions
+    func setupView(){
         //Set up picker
         self.servings.dataSource = self
         self.servings.delegate = self
@@ -53,17 +71,17 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         tableSetup()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44;
-        
-        //Get account
-        getAccount()
     }
     
-    func getAccount(){
+    func getAccount() -> Bool{
         // Read all
         let users : [User] = userService.getAll()
-        if(users.count == 1){
-            //get first (and only) account in array
+        if(users.count > 0){
+            //get first account in array
             account = users[0]
+            return true
+        }else{
+            return false
         }
     }
 
