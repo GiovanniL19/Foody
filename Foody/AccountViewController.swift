@@ -13,9 +13,9 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
     //MARK: Properties
     var accounts: [NSManagedObject] = []
     
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var username: InputUITextField!
+    @IBOutlet weak var email: InputUITextField!
+    @IBOutlet weak var password: InputUITextField!
     @IBOutlet weak var touchID: UISwitch!
     @IBOutlet weak var privateAccount: UISwitch!
     @IBOutlet weak var accountInfo: UILabel!
@@ -44,11 +44,10 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
         //Setup save button
         //Create navigation bar add button with action
         let checkIconImage = UIImage(named: "Check")!.withRenderingMode(UIImageRenderingMode.automatic)
-        let saveBtn = UIBarButtonItem(image: checkIconImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(AccountViewController.save))
+        let saveBtn = UIBarButtonItem(image: checkIconImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(AccountViewController.saveAccount))
         
         //Add new button to right of navigation bar
         self.navigationItem.rightBarButtonItem = saveBtn
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,81 +55,106 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
         profilePicture.layer.cornerRadius = profilePicture.frame.height/2
     }
     
-    func save(){
-        //Create URL request
-        var request = URLRequest(url: URL(string: "http://localhost:3002/users/" + (account?.id)!)!)
+    func pulseProfilePicture(numberOfpulses : Float){
+        //Initialise pulse
+        let pulse = Pulse(numberPulses: numberOfpulses, radius: 90, position: profilePicture.center, duration : 0, colour : UIColor.green.cgColor)
+        //Add pulse to profile picture
+        self.view.layer.insertSublayer(pulse, below: profilePicture.layer)
         
-        //Set content type
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        
-        //Set request method
-        request.httpMethod = "PUT"
-        
-        //Create json via dictionary
-        var image : String
-        if(selectedImage.isEmpty){
-            image = (self.account?.profilePicture)!
-        }else{
-            image = selectedImage
-        }
-        
-        let dictionary = ["username": self.username.text, "image": String(image), "fullname": self.fullName.text, "email": self.email.text, "password": self.password.text, "memberDate": self.account?.memberDate]
-        
-        //Add json to body
-        request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
-        
-        
-        //start of task
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            //get response code
-            let httpStatus = response as? HTTPURLResponse
-            
-            if (httpStatus?.statusCode != 200) {  //Check for http errors
-                print("response = \(response)")
-                print("Post should return status code 200. \(httpStatus?.statusCode) was returned")
-                //Go back to main thread and perferom a segue to login
-                DispatchQueue.main.async {
-                    //Create alert
-                    let alert = UIAlertController(title: "ERROR", message: "Error updating account", preferredStyle: UIAlertControllerStyle.alert)
+    }
+    
+    func saveAccount(){
+        if(self.username.text != ""){
+            if(self.email.text != ""){
+                if(self.password.text != ""){
+                    pulseProfilePicture(numberOfpulses: 5)
+                    //This saves core data and makes PUT request to save online
+                    //Create URL request
+                    var request = URLRequest(url: URL(string: "http://localhost:3002/users/" + (account?.id)!)!)
                     
-                    //add action to alert
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                    //Set content type
+                    request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
                     
-                    //Present alert to user
-                    self.present(alert, animated: true, completion: nil)
+                    //Set request method
+                    request.httpMethod = "PUT"
+                    
+                    //Create json via dictionary
+                    var image : String
+                    if(selectedImage.isEmpty){
+                        image = (self.account?.profilePicture)!
+                    }else{
+                        image = selectedImage
+                    }
+                    
+                    let dictionary = ["username": self.username.text, "image": String(image), "fullname": self.fullName.text, "email": self.email.text, "password": self.password.text, "memberDate": self.account?.memberDate]
+                    
+                    //Add json to body
+                    request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
+                    
+                    
+                    //start of task
+                    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                        //get response code
+                        let httpStatus = response as? HTTPURLResponse
+                        
+                        if (httpStatus?.statusCode != 200) {  //Check for http errors
+                            print("response = \(response)")
+                            print("Post should return status code 200. \(httpStatus?.statusCode) was returned")
+                            //Go back to main thread and perferom a segue to login
+                            DispatchQueue.main.async {
+                                //Create alert
+                                let alert = UIAlertController(title: "ERROR", message: "Error updating account", preferredStyle: UIAlertControllerStyle.alert)
+                                
+                                //add action to alert
+                                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                                
+                                //Present alert to user
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        }else{
+                            DispatchQueue.main.async {
+                                //Save changes
+                                self.account?.username = self.username.text
+                                self.account?.password = self.password.text
+                                self.account?.email = self.email.text
+                                self.account?.fullname = self.fullName.text
+                                self.account?.profilePicture = image
+                                
+                                if(self.userService.update(updatedUser: self.account!)){
+                                    //Create alert
+                                    let alert = UIAlertController(title: "SAVED", message: "Account settings saved", preferredStyle: UIAlertControllerStyle.alert)
+                                    
+                                    //add action to alert
+                                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                                    
+                                    //Present alert to user
+                                    self.present(alert, animated: true, completion: nil)
+                                }else{
+                                    //Create alert
+                                    let alert = UIAlertController(title: "ERROR", message: "Was unable to log you out, please try again", preferredStyle: UIAlertControllerStyle.alert)
+                                    
+                                    //add action to alert
+                                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                                    
+                                    //Present alert to user
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                            }
+                        }
+                        
+                    }
+                    task.resume()
+                }else{
+                    self.password.shake()
                 }
             }else{
-                //Save changes
-                self.account?.username = self.username.text
-                self.account?.password = self.password.text
-                self.account?.email = self.email.text
-                self.account?.fullname = self.fullName.text
-                self.account?.profilePicture = image
-                
-                if(self.userService.update(updatedUser: self.account!)){
-                    //Create alert
-                    let alert = UIAlertController(title: "SAVED", message: "Account settings saved", preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    //add action to alert
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-                    
-                    //Present alert to user
-                    self.present(alert, animated: true, completion: nil)
-                }else{
-                    //Create alert
-                    let alert = UIAlertController(title: "ERROR", message: "Was unable to log you out, please try again", preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    //add action to alert
-                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-                    
-                    //Present alert to user
-                    self.present(alert, animated: true, completion: nil)
-                }
+                self.email.shake()
             }
-            
+        }else{
+         self.username.shake()
         }
-        task.resume()
     }
+    
     
     func getAccount(){
         // Read all

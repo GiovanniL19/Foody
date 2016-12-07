@@ -16,8 +16,8 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     }
 
     //MARK: Properties
-    @IBOutlet weak var postTitle: UITextField!
-    @IBOutlet weak var postDescription: UITextField!
+    @IBOutlet weak var postTitle: InputUITextField!
+    @IBOutlet weak var postDescription: InputUITextField!
     @IBOutlet weak var method: UITextView!
     @IBOutlet weak var ingredientsScrollView: UIView!
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
@@ -30,7 +30,9 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     var selectedImage : String = ""
     var account : User?
     var servingsData : [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
-    var selectedServing : String = ""
+    var selectedServing : String = "1"
+    var ingredients : [String] = []
+    
     
     //Create instance of UserService
     let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
@@ -102,6 +104,52 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         
     }
     
+    func saveNewPost(){
+        //Create URL request
+        var request = URLRequest(url: URL(string: "http://localhost:3002/posts")!)
+        
+        //Set content type
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        //Set request method
+        request.httpMethod = "POST"
+        
+        //Create dictionary
+        let dictionary : [String : Any] = ["title": postTitle.text, "username": account?.username, "profilePicture": account?.profilePicture, "image": selectedImage, "desc": self.postDescription.text, "servings": selectedServing, "method": method.text, "ingredients": ingredients, "difficulty": String(difficultyControl.difficulty), "time": String(timeControl.time)]
+        
+        //Add json to body
+        request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
+        
+        //start of task
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            //get response code
+            let httpStatus = response as? HTTPURLResponse
+            
+            if (httpStatus?.statusCode != 201) {  //Check for http errors
+                print("response = \(response)")
+                print("Post should return status code 201. \(httpStatus?.statusCode) was returned")
+                
+                //Setup alert
+                let alert = UIAlertController(title: "ERROR", message: "An error occured", preferredStyle: UIAlertControllerStyle.alert)
+                //Add action to alert
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                
+                //Present alert to user
+                self.present(alert, animated: true, completion: nil)
+
+                
+            }else{
+                //Go back to main thread
+                DispatchQueue.main.async {
+                    //Goes back
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+            }
+        }
+        task.resume()
+    }
+    
     //MARK: Actions
     @IBAction func addIngredient(_ sender: UIButton) {
         //Set y position for new input field
@@ -150,10 +198,9 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         present(imagePickerController, animated: true, completion: nil)
         
     }
+    
     //When add has been clicked, this function is called
     @IBAction func addPost(){
-        var ingredients : [String] = []
-        
         //Get ingredients
         for i in 0...ingredientCount{
             //check if field exists
@@ -165,40 +212,26 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
             }
         }
         
-        //Create URL request
-        var request = URLRequest(url: URL(string: "http://localhost:3002/posts")!)
-        
-        //Set content type
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        
-        //Set request method
-        request.httpMethod = "POST"
-        
-        //Create dictionary
-        let dictionary : [String : Any] = ["title": postTitle.text, "username": account?.username, "profilePicture": account?.profilePicture, "image": selectedImage, "desc": self.postDescription.text, "servings": selectedServing, "method": method.text, "ingredients": ingredients, "difficulty": String(difficultyControl.difficulty), "time": String(timeControl.time)]
-    
-        //Add json to body
-        request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
-        
-        //start of task
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            //get response code
-            let httpStatus = response as? HTTPURLResponse
-            
-            if (httpStatus?.statusCode != 201) {  //Check for http errors
-                print("response = \(response)")
-                print("Post should return status code 201. \(httpStatus?.statusCode) was returned")
-            }else{
-                //Go back to main thread
-                DispatchQueue.main.async {
-                    //Goes back
-                    self.navigationController?.popViewController(animated: true)
-                }
+        if(self.postTitle.text != ""){
+            if(self.postDescription.text != ""){
+                if(selectedImage != "" && ingredientCount != 0 && self.method.text != ""){
+                    saveNewPost()
+                }else{
+                    //Setup alert
+                    let alert = UIAlertController(title: "ATTENTION", message: "Please fill in all required fields", preferredStyle: UIAlertControllerStyle.alert)
+                    //Add action to alert
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    //Present alert to user
+                    self.present(alert, animated: true, completion: nil)
 
+                }
+            }else{
+                self.postDescription.shake()
             }
+        }else{
+            self.postTitle.shake()
         }
-        task.resume()
-        
     }
     
     //MARK: UIImagePickerControllerDelegate

@@ -12,6 +12,7 @@
 		F51AFC981DF30C5D00834C02 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51AFC971DF30C5D00834C02 /* PostViewController.swift */; };
 		F53F277A1DF861B1006A7C8A /* PostControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53F27791DF861B1006A7C8A /* PostControllerTests.swift */; };
 		F53F277E1DF8905B006A7C8A /* NewPostTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53F277D1DF8905B006A7C8A /* NewPostTableController.swift */; };
+		F53F27821DF898BE006A7C8A /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53F27811DF898BE006A7C8A /* Pulse.swift */; };
 		F54D19A91DF7701600E23349 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F54D19A81DF7701600E23349 /* Assets.xcassets */; };
 		F55606751DF1C37C003EA862 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55606741DF1C37C003EA862 /* PostTableViewCell.swift */; };
 		F570D2291DF1CF60005C1DD1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F570D2281DF1CF60005C1DD1 /* Post.swift */; };
@@ -61,6 +62,7 @@
 		F53F27731DF85D9C006A7C8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F53F27791DF861B1006A7C8A /* PostControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostControllerTests.swift; sourceTree = "<group>"; };
 		F53F277D1DF8905B006A7C8A /* NewPostTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostTableController.swift; sourceTree = "<group>"; };
+		F53F27811DF898BE006A7C8A /* Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulse.swift; sourceTree = "<group>"; };
 		F54D19A81DF7701600E23349 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F55606741DF1C37C003EA862 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		F56C9C971DF1996A0072E771 /* Toast-Swift-master.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "Toast-Swift-master.zip"; path = "../../Downloads/Toast-Swift-master.zip"; sourceTree = "<group>"; };
@@ -133,11 +135,11 @@
 			isa = PBXGroup;
 			children = (
 				F59624A31DD2782400EDD78C /* LoginViewController.swift */,
+				F587F5B71DF47D2800D5C3CB /* RegisterViewController.swift */,
 				F570D22A1DF1D2AB005C1DD1 /* FeedTableViewController.swift */,
 				F51AFC931DF2F9E000834C02 /* NewPostTableViewController.swift */,
 				F51AFC971DF30C5D00834C02 /* PostViewController.swift */,
 				F58C62541DF42FC10087263F /* AccountViewController.swift */,
-				F587F5B71DF47D2800D5C3CB /* RegisterViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -149,6 +151,7 @@
 				F51AFC911DF2F1BD00834C02 /* InputUITextField.swift */,
 				F58C62521DF363D70087263F /* TimeControl.swift */,
 				F58C62501DF35CDF0087263F /* DifficultyControl.swift */,
+				F53F27811DF898BE006A7C8A /* Pulse.swift */,
 				F59624A51DD2782400EDD78C /* Main.storyboard */,
 			);
 			name = View;
@@ -357,6 +360,7 @@
 				F58C62531DF363D70087263F /* TimeControl.swift in Sources */,
 				F58C62511DF35CDF0087263F /* DifficultyControl.swift in Sources */,
 				F55606751DF1C37C003EA862 /* PostTableViewCell.swift in Sources */,
+				F53F27821DF898BE006A7C8A /* Pulse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +545,7 @@
 				F53F27771DF85D9C006A7C8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F59624991DD2782400EDD78C /* Build configuration list for PBXProject "Foody" */ = {
 			isa = XCConfigurationList;

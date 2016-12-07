@@ -169,7 +169,7 @@ class FeedTableViewController: UITableViewController {
             
             //Set cell information
             cell.postTitle.text = post.title
-            cell.username.text = post.username
+            cell.postDescription.text = post.desc
             
             if(!post.profilePicture.isEmpty){
                 cell.profileImage.image = post.getProfilePicture()

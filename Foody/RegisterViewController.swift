@@ -26,9 +26,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         super.viewDidLoad()
     }
     
-    
-    //MARK: Actions
-    @IBAction func register(_ sender: Any) {
+    func registerAccount(){
         //Create URL request
         var request = URLRequest(url: URL(string: "http://localhost:3002/users")!)
         
@@ -43,7 +41,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         
         //Add json to body
         request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
-
+        
         
         //start of task
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -92,6 +90,32 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             
         }
         task.resume()
+    }
+    
+    //MARK: Actions
+    @IBAction func register(_ sender: Any) {
+        if(self.username.text != ""){
+            if(self.fullName.text != ""){
+                if(self.email.text != ""){
+                    if(self.password.text != ""){
+                        //Register user
+                        registerAccount()
+                    }else{
+                        self.message.text = "Please enter a password"
+                        self.password.shake()
+                    }
+                }else{
+                    self.message.text = "Please enter your email"
+                    self.email.shake()
+                }
+            }else{
+                self.message.text = "Please enter your full name"
+                self.fullName.shake()
+            }
+        }else{
+            self.message.text = "Please enter a username"
+            self.username.shake()
+        }
     }
     
     @IBAction func addImage(_ sender: Any) {
