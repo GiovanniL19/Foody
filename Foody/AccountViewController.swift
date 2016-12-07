@@ -101,8 +101,7 @@ class AccountViewController: UIViewController {
         }
     }
     
-    //MARK: Actions
-    @IBAction func logout(_ sender: UIButton) {
+    func doLogout(){
         if(userService.delete(id: (account?.objectID)!)){
             //Setup controller
             let viewController : UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
@@ -120,6 +119,74 @@ class AccountViewController: UIViewController {
             //Present alert to user
             self.present(alert, animated: true, completion: nil)
         }
+
+    }
+    //MARK: Actions
+    @IBAction func deleteUser(_ sender: UIButton) {
+        //Delete confirmation alert
+        let refreshAlert = UIAlertController(title: "DELETE ACCOUNT", message: "Are you sure you want to delete your account?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            //Create URL request
+            var request = URLRequest(url: URL(string: "http://localhost:3002/users/" + (self.account?.id)!)!)
+            //Set content type
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            
+            //Set request method
+            request.httpMethod = "DELETE"
+            
+            //start of task
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                //get response code
+                let httpStatus  : HTTPURLResponse? = response as! HTTPURLResponse?
+                
+                if(httpStatus == nil){
+                    //Go back to main thread and perferom a segue to login
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "SERVER ISSUE", message: "Unable to connect to server", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        //add action to alert
+                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                        
+                        //Present alert to user
+                        self.present(alert, animated: true, completion: nil)                }
+                }else if (httpStatus?.statusCode != 200) {  //Check for http errors
+                    print("response = \(response)")
+                    print("GET should return status code 200. \(httpStatus?.statusCode) was returned")
+                    if(httpStatus?.statusCode == 404){
+                        //Go back to main thread
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "DELETE ISSUE", message: "Unable to delete user", preferredStyle: UIAlertControllerStyle.alert)
+                            
+                            //add action to alert
+                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                            
+                            //Present alert to user
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                }else{
+                    //Go back to main thread
+                    DispatchQueue.main.async {
+                        //Logout and delete core data
+                        self.doLogout()
+                    }
+                    
+                }
+            }
+            task.resume()
+
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+    }
+        
+    @IBAction func logout(_ sender: UIButton) {
+        doLogout()
     }
 
 }

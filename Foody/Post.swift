@@ -11,6 +11,7 @@ import UIKit
 
 class Post: NSObject {
     //MARK: Properties
+    var id : String = ""
     var profilePicture : String = ""
     var username : String = ""
     var title : String = ""

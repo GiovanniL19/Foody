@@ -10,21 +10,12 @@ import UIKit
 
 class FeedTableViewController: UITableViewController {
     //MARK: Properties
-    var overlay : UIView?
+    @IBOutlet weak var loadingView: UIView!
     var posts = [Post]()
     
     //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        //Create overlay
-        overlay = UIView(frame: view.frame)
-        overlay!.backgroundColor = UIColor.white
-        overlay!.alpha = 0.8
-        
-        //Display overlay until data has loaded
-        view.addSubview(overlay!)
         
         //Setup talbe
         self.tableSetup()
@@ -36,6 +27,8 @@ class FeedTableViewController: UITableViewController {
     }
     
     func getAllPosts(){
+        loadingView.isHidden = false
+        
         //Empty posts
         posts = []
         //Reload table
@@ -97,10 +90,12 @@ class FeedTableViewController: UITableViewController {
                     let image = post["image"] as! String
                     let profilePicture = post["profilePicture"] as! String
                     let username = post["username"] as! String
+                    let id = post["id"] as! String
                     
                     let post = Post(username : username, title: postTitle, image : image, profilePicture: profilePicture, servings: Int(servings)!, desc: postDescription, method: method, ingredients: ingredients);
                     post.difficulty = Int(difficulty)!
                     post.time = Int(time)!
+                    post.id = id
                     
                     //add post to array
                     self.posts += [post]
@@ -110,8 +105,7 @@ class FeedTableViewController: UITableViewController {
                 DispatchQueue.main.async{
                     //update table
                     self.tableView.reloadData()
-                    //hide overlay
-                    self.overlay?.removeFromSuperview()
+                    self.loadingView.isHidden = true
                 }
 
             }

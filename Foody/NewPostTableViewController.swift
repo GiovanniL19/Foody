@@ -8,10 +8,15 @@
 
 import UIKit
 
-class NewPostTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NewPostTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    @available(iOS 2.0, *)
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
     //MARK: Properties
     @IBOutlet weak var postTitle: UITextField!
-    @IBOutlet weak var servings: UITextField!
     @IBOutlet weak var postDescription: UITextField!
     @IBOutlet weak var method: UITextView!
     @IBOutlet weak var ingredientsScrollView: UIView!
@@ -19,10 +24,13 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var difficultyControl: DifficultyControl!
     @IBOutlet weak var timeControl: TimeControl!
+    @IBOutlet weak var servings: UIPickerView!
     
     var ingredientCount : Int = 0
     var selectedImage : String = ""
     var account : User?
+    var servingsData : [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+    var selectedServing : String = ""
     
     //Create instance of UserService
     let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
@@ -31,6 +39,9 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Set up picker
+        self.servings.dataSource = self
+        self.servings.delegate = self
         
         //Create navigation bar add button with action
         let addButton = UIBarButtonItem(title: "ADD", style: UIBarButtonItemStyle.plain, target: self, action: #selector(NewPostTableViewController.addPost))
@@ -146,7 +157,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         request.httpMethod = "POST"
         
         //Create dictionary
-        let dictionary : [String : Any] = ["title": postTitle.text, "username": account?.username, "profilePicture": account?.profilePicture, "image": selectedImage, "desc": self.postDescription.text, "servings": servings.text, "method": method.text, "ingredients": ingredients, "difficulty": String(difficultyControl.difficulty), "time": String(timeControl.time)]
+        let dictionary : [String : Any] = ["title": postTitle.text, "username": account?.username, "profilePicture": account?.profilePicture, "image": selectedImage, "desc": self.postDescription.text, "servings": selectedServing, "method": method.text, "ingredients": ingredients, "difficulty": String(difficultyControl.difficulty), "time": String(timeControl.time)]
     
         //Add json to body
         request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
@@ -160,8 +171,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
                 print("response = \(response)")
                 print("Post should return status code 201. \(httpStatus?.statusCode) was returned")
             }else{
-                //Get response
-                //Go back to main thread and perferom a segue to login
+                //Go back to main thread
                 DispatchQueue.main.async {
                     //Goes back
                     self.navigationController?.popViewController(animated: true)
@@ -189,5 +199,20 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         
         selectedImage = (pictureData?.base64EncodedString())!
         dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Data Sources
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return servingsData.count
+    }
+    
+    //MARK: Delegates
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return servingsData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)  -> String? {
+        selectedServing =  servingsData[row]
+        return servingsData[row]
     }
 }
