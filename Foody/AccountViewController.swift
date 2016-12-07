@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AccountViewController: UIViewController {
+class AccountViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: Properties
     var accounts: [NSManagedObject] = []
     
@@ -21,7 +21,9 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var accountInfo: UILabel!
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet var tapGesture: UITapGestureRecognizer!
     
+    var selectedImage : String = ""
     var account : User?
     
     //Create instance of UserService
@@ -31,6 +33,10 @@ class AccountViewController: UIViewController {
     //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Link gesture 
+        profilePicture.isUserInteractionEnabled = true
+        profilePicture.addGestureRecognizer(tapGesture)
         
         //Get account
         getAccount()
@@ -51,32 +57,79 @@ class AccountViewController: UIViewController {
     }
     
     func save(){
-        //Save changes
-        account?.username = username.text
-        account?.password = password.text
-        account?.email = email.text
-        account?.fullname = fullName.text
-        account?.profilePicture = ""
+        //Create URL request
+        var request = URLRequest(url: URL(string: "http://localhost:3002/users/" + (account?.id)!)!)
         
-        if(userService.update(updatedUser: account!)){
-            //Create alert
-            let alert = UIAlertController(title: "SAVED", message: "Account settings saved", preferredStyle: UIAlertControllerStyle.alert)
-            
-            //add action to alert
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-            
-            //Present alert to user
-            self.present(alert, animated: true, completion: nil)
+        //Set content type
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        //Set request method
+        request.httpMethod = "PUT"
+        
+        //Create json via dictionary
+        var image : String
+        if(selectedImage.isEmpty){
+            image = (self.account?.profilePicture)!
         }else{
-            //Create alert
-            let alert = UIAlertController(title: "ERROR", message: "Was unable to log you out, please try again", preferredStyle: UIAlertControllerStyle.alert)
-            
-            //add action to alert
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-            
-            //Present alert to user
-            self.present(alert, animated: true, completion: nil)
+            image = selectedImage
         }
+        
+        let dictionary = ["username": self.username.text, "image": String(image), "fullname": self.fullName.text, "email": self.email.text, "password": self.password.text, "memberDate": self.account?.memberDate]
+        
+        //Add json to body
+        request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
+        
+        
+        //start of task
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            //get response code
+            let httpStatus = response as? HTTPURLResponse
+            
+            if (httpStatus?.statusCode != 200) {  //Check for http errors
+                print("response = \(response)")
+                print("Post should return status code 200. \(httpStatus?.statusCode) was returned")
+                //Go back to main thread and perferom a segue to login
+                DispatchQueue.main.async {
+                    //Create alert
+                    let alert = UIAlertController(title: "ERROR", message: "Error updating account", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    //add action to alert
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    //Present alert to user
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }else{
+                //Save changes
+                self.account?.username = self.username.text
+                self.account?.password = self.password.text
+                self.account?.email = self.email.text
+                self.account?.fullname = self.fullName.text
+                self.account?.profilePicture = image
+                
+                if(self.userService.update(updatedUser: self.account!)){
+                    //Create alert
+                    let alert = UIAlertController(title: "SAVED", message: "Account settings saved", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    //add action to alert
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    //Present alert to user
+                    self.present(alert, animated: true, completion: nil)
+                }else{
+                    //Create alert
+                    let alert = UIAlertController(title: "ERROR", message: "Was unable to log you out, please try again", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    //add action to alert
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    //Present alert to user
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+            
+        }
+        task.resume()
     }
     
     func getAccount(){
@@ -122,6 +175,19 @@ class AccountViewController: UIViewController {
 
     }
     //MARK: Actions
+    @IBAction func changeProfilePicture(_ sender: UITapGestureRecognizer) {
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library
+        let imagePickerController = UIImagePickerController()
+        
+        // Only allow photos to be picked, not taken
+        imagePickerController.sourceType = .photoLibrary
+        
+        imagePickerController.delegate = self
+        
+        
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     @IBAction func deleteUser(_ sender: UIButton) {
         //Delete confirmation alert
         let refreshAlert = UIAlertController(title: "DELETE ACCOUNT", message: "Are you sure you want to delete your account?", preferredStyle: UIAlertControllerStyle.alert)
@@ -189,4 +255,21 @@ class AccountViewController: UIViewController {
         doLogout()
     }
 
+    //MARK: UIImagePickerControllerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Dismiss the picker if the user canceled
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //Get image
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage //selected image
+        profilePicture.image = image
+        //Encode image to base64
+        //Convert imgage to NSData
+        let pictureData = UIImagePNGRepresentation(image)
+        
+        selectedImage = (pictureData?.base64EncodedString(options: []))!
+        dismiss(animated: true, completion: nil)
+    }
 }

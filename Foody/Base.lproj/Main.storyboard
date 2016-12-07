@@ -762,11 +762,15 @@
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultUser" translatesAutoresizingMaskIntoConstraints="NO" id="S3H-JA-8ez">
                                 <rect key="frame" x="120" y="4" width="80" height="80"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="S3H-JA-8ez" secondAttribute="height" multiplier="1:1" id="4uu-aL-TcJ"/>
                                     <constraint firstAttribute="height" constant="80" id="AyP-73-K0d"/>
                                     <constraint firstAttribute="width" constant="80" id="g52-4z-uF6"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="myS-Nv-amR" appends="YES" id="fAw-Vd-aZt"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -802,11 +806,17 @@
                         <outlet property="password" destination="FsM-f5-pOM" id="Yvn-3H-TW3"/>
                         <outlet property="privateAccount" destination="E6y-qi-9sx" id="hYw-Eo-upD"/>
                         <outlet property="profilePicture" destination="S3H-JA-8ez" id="r22-XO-w0s"/>
+                        <outlet property="tapGesture" destination="myS-Nv-amR" id="7hA-5I-edR"/>
                         <outlet property="touchID" destination="LQS-Ds-rcc" id="YsW-Lr-Z6N"/>
                         <outlet property="username" destination="VWD-TW-u5i" id="Xi7-25-De3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CQN-12-wi7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="myS-Nv-amR">
+                    <connections>
+                        <action selector="changeProfilePicture:" destination="dDI-cd-RaF" id="nhS-AG-BRS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3003.75" y="848.23943661971828"/>
         </scene>
