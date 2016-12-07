@@ -21,13 +21,28 @@ class PostViewController: UIViewController {
     @IBOutlet weak var method: UITextView!
     @IBOutlet weak var ingredientsView: UIView!
     @IBOutlet weak var ingredientHeightContraint: NSLayoutConstraint!
+    @IBOutlet weak var deleteBtn: UIButton!
 
     var post: Post?
+    var account : User?
+
+    //Create instance of UserService
+    let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Read all users
+        let users : [User] = userService.getAll()
+        //Get first user
+        account = users[0]
         if let post = post {
+            if(post.username == account?.username){
+                deleteBtn.isHidden = false
+            }else{
+                deleteBtn.isHidden = true
+            }
             postImage.image = post.getImage()
             profilePicture.image = post.getProfilePicture()
             

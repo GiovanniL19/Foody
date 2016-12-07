@@ -10,11 +10,21 @@ import UIKit
 
 class FeedTableViewController: UITableViewController {
     //MARK: Properties
+    var overlay : UIView?
     var posts = [Post]()
     
     //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //Create overlay
+        overlay = UIView(frame: view.frame)
+        overlay!.backgroundColor = UIColor.white
+        overlay!.alpha = 0.8
+        
+        //Display overlay until data has loaded
+        view.addSubview(overlay!)
         
         //Setup talbe
         self.tableSetup()
@@ -28,6 +38,8 @@ class FeedTableViewController: UITableViewController {
     func getAllPosts(){
         //Empty posts
         posts = []
+        //Reload table
+        self.tableView.reloadData()
         //Create URL request
         var request = URLRequest(url: URL(string: "http://localhost:3002/posts")!)
         
@@ -40,12 +52,20 @@ class FeedTableViewController: UITableViewController {
         //start of task
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             //get response code
-            let httpStatus = response as! HTTPURLResponse
+            let httpStatus : HTTPURLResponse? = response as! HTTPURLResponse?
             
-            if (httpStatus.statusCode != 200) {  //Check for http errors
+            if(httpStatus == nil){
+                let alert = UIAlertController(title: "SERVER ISSUE", message: "Unable to connect to server", preferredStyle: UIAlertControllerStyle.alert)
+                
+                //add action to alert
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                
+                //Present alert to user
+                self.present(alert, animated: true, completion: nil)
+            }else if (httpStatus?.statusCode != 200) {  //Check for http errors
                 print("response = \(response)")
-                print("GET should return status code 200. \(httpStatus.statusCode) was returned")
-                if(httpStatus.statusCode == 404){
+                print("GET should return status code 200. \(httpStatus?.statusCode) was returned")
+                if(httpStatus?.statusCode == 404){
                     //Go back to main thread and perferom a segue to login
                     DispatchQueue.main.async {
                         //Create alert
@@ -56,7 +76,6 @@ class FeedTableViewController: UITableViewController {
                         
                         //Present alert to user
                         self.present(alert, animated: true, completion: nil)
-
                     }
                 }
             }else{
@@ -89,7 +108,10 @@ class FeedTableViewController: UITableViewController {
                 
                 //Update table with data
                 DispatchQueue.main.async{
+                    //update table
                     self.tableView.reloadData()
+                    //hide overlay
+                    self.overlay?.removeFromSuperview()
                 }
 
             }

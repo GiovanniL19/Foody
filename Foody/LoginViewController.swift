@@ -71,12 +71,17 @@ class LoginViewController: UIViewController {
             //start of task
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 //get response code
-                let httpStatus = response as! HTTPURLResponse
+                let httpStatus  : HTTPURLResponse? = response as! HTTPURLResponse?
                 
-                if (httpStatus.statusCode != 200) {  //Check for http errors
+                if(httpStatus == nil){
+                    //Go back to main thread and perferom a segue to login
+                    DispatchQueue.main.async {
+                        self.message.text = "Unable to connect to server"
+                    }
+                }else if (httpStatus?.statusCode != 200) {  //Check for http errors
                     print("response = \(response)")
-                    print("GET should return status code 200. \(httpStatus.statusCode) was returned")
-                    if(httpStatus.statusCode == 404){
+                    print("GET should return status code 200. \(httpStatus?.statusCode) was returned")
+                    if(httpStatus?.statusCode == 404){
                         //Go back to main thread and perferom a segue to login
                         DispatchQueue.main.async {
                             self.message.text = "Incorrect credentials"
