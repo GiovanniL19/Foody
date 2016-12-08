@@ -29,8 +29,6 @@ class FeedTableViewController: UITableViewController {
     func getAllPosts(){
         loadingView.isHidden = false
         
-        //Empty posts
-        posts = []
         //Reload table
         self.tableView.reloadData()
         //Create URL request
@@ -72,42 +70,45 @@ class FeedTableViewController: UITableViewController {
                     }
                 }
             }else{
-                //Get response
-                let jsonResponse = try? JSONSerialization.jsonObject(with: data!, options: [])  as! [String:AnyObject]
-                
-                //get user object from response
-                let postsJson = jsonResponse?["posts"]
-                
-                //Loop through json posts
-                for post in postsJson as! [Dictionary<String, AnyObject>] {
-                    let postTitle = post["title"] as! String
-                    let servings = post["servings"] as! String
-                    let postDescription = post["desc"] as! String
-                    let method = post["method"] as! String
-                    let ingredients = post["ingredients"] as! [String]
-                    let difficulty = post["difficulty"] as! String
-                    let time = post["time"] as! String
-                    let image = post["image"] as! String
-                    let profilePicture = post["profilePicture"] as! String
-                    let username = post["username"] as! String
-                    let id = post["id"] as! String
-                    
-                    let post = Post(username : username, title: postTitle, image : image, profilePicture: profilePicture, servings: Int(servings)!, desc: postDescription, method: method, ingredients: ingredients);
-                    post.difficulty = Int(difficulty)!
-                    post.time = Int(time)!
-                    post.id = id
-                    
-                    //add post to array
-                    self.posts += [post]
-                }
-                
-                //Update table with data
+                //Runs the following code on main thread
                 DispatchQueue.main.async{
-                    //update table
+                    //Get response
+                    let jsonResponse = try? JSONSerialization.jsonObject(with: data!, options: [])  as! [String:AnyObject]
+                    
+                    //get user object from response
+                    let postsJson = jsonResponse?["posts"]
+                    
+                    //Loop through json posts
+                    //Empty posts
+                    self.posts = []
+
+                    for post in postsJson as! [Dictionary<String, AnyObject>] {
+                        let postTitle = post["title"] as! String
+                        let servings = post["servings"] as! String
+                        let postDescription = post["desc"] as! String
+                        let method = post["method"] as! String
+                        let ingredients = post["ingredients"] as! [String]
+                        let difficulty = post["difficulty"] as! String
+                        let time = post["time"] as! String
+                        let image = post["image"] as! String
+                        let profilePicture = post["profilePicture"] as! String
+                        let username = post["username"] as! String
+                        let id = post["id"] as! String
+                        
+                        let post = Post(username : username, title: postTitle, image : image, profilePicture: profilePicture, servings: Int(servings)!, desc: postDescription, method: method, ingredients: ingredients);
+                        post.difficulty = Int(difficulty)!
+                        post.time = Int(time)!
+                        post.id = id
+                        
+                        //add post to array
+                        self.posts += [post]
+                    }
+                    
+                    //Update table with new data
                     self.tableView.reloadData()
                     self.loadingView.isHidden = true
+                
                 }
-
             }
             
         }
