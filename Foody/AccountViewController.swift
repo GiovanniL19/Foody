@@ -265,12 +265,10 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }
             }
             task.resume()
-
         }))
         
-        deleteAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
-            
-        }))
+        //Show no and do nothing
+        deleteAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in}))
         
         present(deleteAlert, animated: true, completion: nil)
     }

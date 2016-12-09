@@ -159,15 +159,6 @@ class YumTableViewController: UITableViewController {
         task.resume()
     }
 
-    // MARK: Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return yums.count
-    }
-    
     func getAccount() -> Bool{
         // Read all
         let users : [User] = userService.getAll()
@@ -179,7 +170,7 @@ class YumTableViewController: UITableViewController {
             return false
         }
     }
-
+    
     func selectedForYum(sender: UIButton!) {
         //save the post in core data
         let postsIndex = sender.tag
@@ -197,7 +188,7 @@ class YumTableViewController: UITableViewController {
         
         //Create dictionary
         let userId = account?.id;
-        let dictionary : [String : Any] = ["user": userId, "post": postID]
+        let dictionary : [String : Any] = ["user": userId!, "post": postID]
         
         //Add json to body
         request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
@@ -236,6 +227,14 @@ class YumTableViewController: UITableViewController {
         
     }
 
+    // MARK: Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return yums.count
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "PostTableViewCell"

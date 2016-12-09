@@ -15,7 +15,6 @@ class FeedTableViewController: UITableViewController {
     var account : User?
     var yums = [String]()
     @IBOutlet weak var yumIcon: UIBarButtonItem!
-    
     //Create instance of UserService
     let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
     

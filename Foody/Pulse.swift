@@ -18,6 +18,42 @@ class Pulse: CALayer {
     var totalPulses : Float = Float.infinity
     
     
+    //MARK: Init
+    required init?(coder aDecoder: NSCoder){
+        super.init(coder : aDecoder)
+    }
+    
+    override init(layer : Any){
+        super.init(layer : layer)
+    }
+    
+    init (numberPulses:Float = Float.infinity, radius:CGFloat, position:CGPoint, duration : TimeInterval, colour : CGColor){
+        super.init()
+        
+        //set values
+        self.backgroundColor = UIColor.black.cgColor
+        self.contentsScale = UIScreen.main.scale
+        self.opacity = 0
+        self.radius = radius
+        self.totalPulses = numberPulses
+        self.position = position
+        self.animationTime = duration
+        self.backgroundColor = colour
+        
+        self.bounds = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
+        self.cornerRadius = radius
+        
+        
+        //add group
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+            self.setupGroup()
+            
+            DispatchQueue.main.async {
+                self.add(self.group, forKey: "pulse")
+            }
+        }
+    }
+    
     //MARK: Functions
     func setupGroup() {
         //declare curve
@@ -55,46 +91,6 @@ class Pulse: CALayer {
         
         //return cskeyframeanimation
         return opacityAnimation
-    }
-    
-    
-    //MARK: Init
-    required init?(coder aDecoder: NSCoder){
-        super.init(coder : aDecoder)
-    }
-    
-    override init(layer : Any){
-        super.init(layer : layer)
-    }
-    
-    init (numberPulses:Float = Float.infinity, radius:CGFloat, position:CGPoint, duration : TimeInterval, colour : CGColor){
-        super.init()
-        
-        //set values
-        self.backgroundColor = UIColor.black.cgColor
-        self.contentsScale = UIScreen.main.scale
-        self.opacity = 0
-        self.radius = radius
-        self.totalPulses = numberPulses
-        self.position = position
-        self.animationTime = duration
-        self.backgroundColor = colour
-        
-        self.bounds = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
-        self.cornerRadius = radius
-        
-        
-        //add group
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-            self.setupGroup()
-            
-            DispatchQueue.main.async {
-                self.add(self.group, forKey: "pulse")
-            }
-        }
-        
-        
-        
     }
     
 }

@@ -29,7 +29,7 @@ class DifficultyControl: UIView {
         let filledImage = UIImage(named: "FilledDifficulty")
         let emptyImage = UIImage(named: "EmptyDifficulty")
         
-        //loops to produce 5 buttons
+        //loops count to produce the buttons
         for _ in 0 ..< count {
             //creates button
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 28, height: 28))

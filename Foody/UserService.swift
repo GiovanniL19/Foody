@@ -17,6 +17,12 @@ class UserService{
         self.context = context
     }
     
+    //Gets user by id
+    func getById(id: NSManagedObjectID) -> User? {
+        //Returns user by id
+        return context.object(with: id) as? User
+    }
+    
     //Creates new user
     func create(username: String, fullname: String, email: String, password: String, profilePicture: String, memberDate: String, id: String) -> User? {
         
@@ -41,12 +47,6 @@ class UserService{
         }
     }
     
-    // Gets all users
-    func getAll() -> [User]{
-        //returns all users
-        return get(withPredicate: NSPredicate(value:true))
-    }
-    
     // Gets all with predicate.
     func get(withPredicate queryPredicate: NSPredicate) -> [User]{
         //Decalre fetch request
@@ -65,12 +65,14 @@ class UserService{
             return [User]()
         }
     }
+
     
-    //Gets user by id
-    func getById(id: NSManagedObjectID) -> User? {
-        //Returns user by id
-        return context.object(with: id) as? User
+    // Gets all users
+    func getAll() -> [User]{
+        //returns all users
+        return get(withPredicate: NSPredicate(value:true))
     }
+    
     
     //Updates user
     func update(updatedUser: User) -> (Bool){

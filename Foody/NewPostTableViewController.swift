@@ -252,12 +252,11 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Data Sources
+    //MARK: Picker Data Source and Delegates
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return servingsData.count
     }
     
-    //MARK: Delegates
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return servingsData[row]
     }
