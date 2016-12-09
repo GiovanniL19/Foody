@@ -142,7 +142,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
                 //Go back to main thread
                 DispatchQueue.main.async {
                     //Goes back
-                    self.navigationController?.popViewController(animated: true)
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
                 
             }

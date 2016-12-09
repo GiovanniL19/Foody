@@ -82,6 +82,7 @@ class UserService{
             user.email = updatedUser.email
             user.password = updatedUser.password
             user.profilePicture = updatedUser.profilePicture
+            user.id = updatedUser.id
             
             if(saveChanges()){
                 return true

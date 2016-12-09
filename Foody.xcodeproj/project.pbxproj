@@ -28,6 +28,7 @@
 		F59624A41DD2782400EDD78C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59624A31DD2782400EDD78C /* LoginViewController.swift */; };
 		F59624A71DD2782400EDD78C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59624A51DD2782400EDD78C /* Main.storyboard */; };
 		F59624AC1DD2782400EDD78C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59624AA1DD2782400EDD78C /* LaunchScreen.storyboard */; };
+		F5CF21FB1DF983C80020A6EB /* YumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CF21FA1DF983C80020A6EB /* YumTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		F59624A61DD2782400EDD78C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F59624AB1DD2782400EDD78C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F59624AD1DD2782400EDD78C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5CF21FA1DF983C80020A6EB /* YumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YumTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				F51AFC931DF2F9E000834C02 /* NewPostTableViewController.swift */,
 				F51AFC971DF30C5D00834C02 /* PostViewController.swift */,
 				F58C62541DF42FC10087263F /* AccountViewController.swift */,
+				F5CF21FA1DF983C80020A6EB /* YumTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F587F5B21DF45CBC00D5C3CB /* UserService.swift in Sources */,
+				F5CF21FB1DF983C80020A6EB /* YumTableViewController.swift in Sources */,
 				F51AFC981DF30C5D00834C02 /* PostViewController.swift in Sources */,
 				F58294961DE38B1D0080044B /* User.swift in Sources */,
 				F58C62581DF4312A0087263F /* Data.xcdatamodeld in Sources */,

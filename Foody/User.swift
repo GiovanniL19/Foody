@@ -18,6 +18,6 @@ public class User: NSManagedObject {
     @NSManaged var profilePicture: String?
     @NSManaged var memberDate: String?
     @NSManaged var id: String?
-    
+
     static let entityName = "User"
 }

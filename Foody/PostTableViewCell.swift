@@ -15,6 +15,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postTitle: UILabel!
     @IBOutlet weak var viewBtn: UIButton!
     @IBOutlet weak var postDescription: UILabel!
+    @IBOutlet weak var yumButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
