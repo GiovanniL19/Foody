@@ -14,6 +14,7 @@ class FeedTableViewController: UITableViewController {
     var posts = [Post]()
     var account : User?
     var yums = [String]()
+    @IBOutlet weak var yumIcon: UIBarButtonItem!
     
     //Create instance of UserService
     let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
@@ -81,6 +82,11 @@ class FeedTableViewController: UITableViewController {
                     let jsonResponse = try? JSONSerialization.jsonObject(with: data!, options: []) as! [String]
                     self.yums = []
                     self.yums = jsonResponse!
+                    if (self.yums.count > 0){
+                        self.yumIcon.image = UIImage(named: "LoveIconFill")
+                    }else{
+                        self.yumIcon.image = UIImage(named: "LoveIcon")
+                    }
                     self.tableView.reloadData()
                 }
             }

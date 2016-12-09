@@ -214,9 +214,9 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func deleteUser(_ sender: UIButton) {
         //Delete confirmation alert
-        let refreshAlert = UIAlertController(title: "DELETE ACCOUNT", message: "Are you sure you want to delete your account?", preferredStyle: UIAlertControllerStyle.alert)
+        let deleteAlert = UIAlertController(title: "DELETE ACCOUNT", message: "Are you sure you want to delete your account?", preferredStyle: UIAlertControllerStyle.alert)
         
-        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             //Create URL request
             var request = URLRequest(url: URL(string: "http://localhost:3002/users/" + (self.account?.id)!)!)
             //Set content type
@@ -268,11 +268,11 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
 
         }))
         
-        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+        deleteAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
             
         }))
         
-        present(refreshAlert, animated: true, completion: nil)
+        present(deleteAlert, animated: true, completion: nil)
     }
         
     @IBAction func logout(_ sender: UIButton) {
