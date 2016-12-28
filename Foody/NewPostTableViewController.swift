@@ -113,6 +113,14 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     }
     
     func saveNewPost(){
+        let alert = UIAlertController(title: "Adding Post", message: "Please wait, you will be redirected...", preferredStyle: UIAlertControllerStyle.alert)
+        //Add action to alert
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+        
+        //Present alert to user
+        self.present(alert, animated: true, completion: nil)
+        
+        
         //Create URL request
         var request = URLRequest(url: URL(string: ip + "/posts")!)
         
@@ -232,7 +240,6 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
                     
                     //Present alert to user
                     self.present(alert, animated: true, completion: nil)
-
                 }
             }else{
                 self.postDescription.shake()
