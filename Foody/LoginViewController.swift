@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var username: InputUITextField!
     @IBOutlet weak var password: InputUITextField!
     @IBOutlet weak var message: UILabel!
+    let ip = Variables.ip
     
     //Create instance of UserService
     let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
@@ -29,7 +30,14 @@ class LoginViewController: UIViewController {
         
         //Removes border (shadow)
         navigationController?.navigationBar.shadowImage = UIImage()
-        
+        //create tap gesture
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        //Hide keyboard when clicked outside keyboard
+        view.endEditing(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +68,7 @@ class LoginViewController: UIViewController {
         if(self.username.text != ""){
             if(self.password.text != ""){
                 //Create URL request
-                var request = URLRequest(url: URL(string: "http://localhost:3002/auth?username=" + self.username.text! + "&password=" + self.password.text!)!)
+                var request = URLRequest(url: URL(string: self.ip + "/auth?username=" + self.username.text! + "&password=" + self.password.text!)!)
                 
                 //Set content type
                 request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

@@ -22,7 +22,8 @@ class PostViewController: UIViewController {
     @IBOutlet weak var ingredientsView: UIView!
     @IBOutlet weak var ingredientHeightContraint: NSLayoutConstraint!
     @IBOutlet weak var deleteBtn: UIButton!
-
+    let ip = Variables.ip
+    
     var post: Post?
     var account : User?
 
@@ -137,7 +138,7 @@ class PostViewController: UIViewController {
     //MARK: Actions
     @IBAction func deletePost(_ sender: Any) {
         //Create URL request
-        var request = URLRequest(url: URL(string: "http://localhost:3002/posts/" + (self.post?.id)!)!)
+        var request = URLRequest(url: URL(string: ip + "/posts/" + (self.post?.id)!)!)
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         

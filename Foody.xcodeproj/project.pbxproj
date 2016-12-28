@@ -29,6 +29,7 @@
 		F59624A71DD2782400EDD78C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59624A51DD2782400EDD78C /* Main.storyboard */; };
 		F59624AC1DD2782400EDD78C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59624AA1DD2782400EDD78C /* LaunchScreen.storyboard */; };
 		F5CF21FB1DF983C80020A6EB /* YumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CF21FA1DF983C80020A6EB /* YumTableViewController.swift */; };
+		F5D940061E14618800E783CE /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D940051E14618800E783CE /* Variables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		F59624AB1DD2782400EDD78C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F59624AD1DD2782400EDD78C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5CF21FA1DF983C80020A6EB /* YumTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YumTableViewController.swift; sourceTree = "<group>"; };
+		F5D940051E14618800E783CE /* Variables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				F51AFC971DF30C5D00834C02 /* PostViewController.swift */,
 				F58C62541DF42FC10087263F /* AccountViewController.swift */,
 				F5CF21FA1DF983C80020A6EB /* YumTableViewController.swift */,
+				F5D940051E14618800E783CE /* Variables.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -263,11 +266,13 @@
 				TargetAttributes = {
 					F53F276E1DF85D9C006A7C8A = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 2HKDEQ83YN;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F596249D1DD2782400EDD78C;
 					};
 					F596249D1DD2782400EDD78C = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 2HKDEQ83YN;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -351,6 +356,7 @@
 				F587F5B21DF45CBC00D5C3CB /* UserService.swift in Sources */,
 				F5CF21FB1DF983C80020A6EB /* YumTableViewController.swift in Sources */,
 				F51AFC981DF30C5D00834C02 /* PostViewController.swift in Sources */,
+				F5D940061E14618800E783CE /* Variables.swift in Sources */,
 				F58294961DE38B1D0080044B /* User.swift in Sources */,
 				F58C62581DF4312A0087263F /* Data.xcdatamodeld in Sources */,
 				F58C62551DF42FC10087263F /* AccountViewController.swift in Sources */,
@@ -402,6 +408,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2HKDEQ83YN;
 				INFOPLIST_FILE = FoodyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.giovannilenguito.FoodyTests;
@@ -415,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2HKDEQ83YN;
 				INFOPLIST_FILE = FoodyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.giovannilenguito.FoodyTests;
@@ -519,6 +527,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2HKDEQ83YN;
 				INFOPLIST_FILE = Foody/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.giovannilenguito.Foody;
@@ -531,6 +540,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2HKDEQ83YN;
 				INFOPLIST_FILE = Foody/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.giovannilenguito.Foody;

@@ -25,7 +25,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     @IBOutlet weak var difficultyControl: DifficultyControl!
     @IBOutlet weak var timeControl: TimeControl!
     @IBOutlet weak var servings: UIPickerView!
-    
+    let ip = Variables.ip
     var ingredientCount : Int = 0
     var selectedImage : String = ""
     var account : User?
@@ -54,6 +54,14 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
             //Present alert to user
             self.present(alert, animated: true, completion: nil)
         }
+        //create tap gesture
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        //Hide keyboard when clicked outside keyboard
+        view.endEditing(true)
     }
     
     
@@ -106,7 +114,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     
     func saveNewPost(){
         //Create URL request
-        var request = URLRequest(url: URL(string: "http://localhost:3002/posts")!)
+        var request = URLRequest(url: URL(string: ip + "/posts")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

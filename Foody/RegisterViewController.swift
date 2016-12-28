@@ -15,6 +15,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var email: InputUITextField!
     @IBOutlet weak var password: InputUITextField!
     @IBOutlet weak var message: UILabel!
+    let ip = Variables.ip
     
     var selectedImage : String = ""
     //Create instance of UserService
@@ -24,11 +25,19 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     //MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        //create tap gesture
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        //Hide keyboard when clicked outside keyboard
+        view.endEditing(true)
     }
     
     func registerAccount(){
         //Create URL request
-        var request = URLRequest(url: URL(string: "http://localhost:3002/users")!)
+        var request = URLRequest(url: URL(string: ip + "/users")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
