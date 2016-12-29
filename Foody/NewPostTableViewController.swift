@@ -25,6 +25,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     @IBOutlet weak var difficultyControl: DifficultyControl!
     @IBOutlet weak var timeControl: TimeControl!
     @IBOutlet weak var servings: UIPickerView!
+    
     let ip = Variables.ip
     var ingredientCount : Int = 0
     var selectedImage : String = ""
@@ -113,13 +114,11 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     }
     
     func saveNewPost(){
-        let alert = UIAlertController(title: "Adding Post", message: "Please wait, you will be redirected...", preferredStyle: UIAlertControllerStyle.alert)
-        //Add action to alert
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-        
-        //Present alert to user
-        self.present(alert, animated: true, completion: nil)
-        
+        //Change add button to spinner to show action is in progress
+        let spinner: UIActivityIndicatorView = UIActivityIndicatorView.init(activityIndicatorStyle: .white)
+        let loadingBtn: UIBarButtonItem = UIBarButtonItem(customView: spinner)
+        self.navigationItem.rightBarButtonItem = loadingBtn
+        spinner.startAnimating()
         
         //Create URL request
         var request = URLRequest(url: URL(string: ip + "/posts")!)

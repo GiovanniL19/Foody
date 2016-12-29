@@ -76,6 +76,12 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
         if(self.username.text != ""){
             if(self.email.text != ""){
                 if(self.password.text != ""){
+                    //Change save button to spinner to show action is in progress
+                    let spinner: UIActivityIndicatorView = UIActivityIndicatorView.init(activityIndicatorStyle: .white)
+                    let loadingBtn: UIBarButtonItem = UIBarButtonItem(customView: spinner)
+                    self.navigationItem.rightBarButtonItem = loadingBtn
+                    spinner.startAnimating()
+                    
                     pulseProfilePicture(numberOfpulses: 5)
                     //This saves core data and makes PUT request to save online
                     //Create URL request
@@ -148,6 +154,14 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
                                     //Present alert to user
                                     self.present(alert, animated: true, completion: nil)
                                 }
+                                
+                                //Create navigation bar add button with action
+                                let checkIconImage = UIImage(named: "Check")!.withRenderingMode(UIImageRenderingMode.automatic)
+                                let saveBtn = UIBarButtonItem(image: checkIconImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(AccountViewController.saveAccount))
+                                
+                                //Add new button to right of navigation bar
+                                self.navigationItem.rightBarButtonItem = saveBtn
+
                             }
                         }
                         
