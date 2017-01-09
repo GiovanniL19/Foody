@@ -129,6 +129,7 @@
 		F58294901DE38A470080044B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F5D940051E14618800E783CE /* Variables.swift */,
 				F58294951DE38B1D0080044B /* User.swift */,
 				F570D2281DF1CF60005C1DD1 /* Post.swift */,
 			);
@@ -145,7 +146,6 @@
 				F51AFC971DF30C5D00834C02 /* PostViewController.swift */,
 				F58C62541DF42FC10087263F /* AccountViewController.swift */,
 				F5CF21FA1DF983C80020A6EB /* YumTableViewController.swift */,
-				F5D940051E14618800E783CE /* Variables.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -158,7 +158,6 @@
 				F58C62521DF363D70087263F /* TimeControl.swift */,
 				F58C62501DF35CDF0087263F /* DifficultyControl.swift */,
 				F53F27811DF898BE006A7C8A /* Pulse.swift */,
-				F59624A51DD2782400EDD78C /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -208,6 +207,7 @@
 				F58294911DE38A4E0080044B /* Controller */,
 				F58294901DE38A470080044B /* Model */,
 				F59624A11DD2782400EDD78C /* AppDelegate.swift */,
+				F59624A51DD2782400EDD78C /* Main.storyboard */,
 				F58C62561DF4312A0087263F /* Data.xcdatamodeld */,
 				F54D19A81DF7701600E23349 /* Assets.xcassets */,
 				F59624AA1DD2782400EDD78C /* LaunchScreen.storyboard */,

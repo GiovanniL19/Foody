@@ -7,5 +7,5 @@
 //
 
 struct Variables {
-    static var ip = "http://52.56.89.64:3002"
+    static var ip = "http://10.4.161.125:3002"
 }

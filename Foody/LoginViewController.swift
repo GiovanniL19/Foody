@@ -15,7 +15,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var username: InputUITextField!
     @IBOutlet weak var password: InputUITextField!
     @IBOutlet weak var message: UILabel!
-    let ip = Variables.ip
     
     //Create instance of UserService
     let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
@@ -68,7 +67,7 @@ class LoginViewController: UIViewController {
         if(self.username.text != ""){
             if(self.password.text != ""){
                 //Create URL request
-                var request = URLRequest(url: URL(string: self.ip + "/auth?username=" + self.username.text! + "&password=" + self.password.text!)!)
+                var request = URLRequest(url: URL(string: Variables.ip + "/auth?username=" + self.username.text! + "&password=" + self.password.text!)!)
                 
                 //Set content type
                 request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

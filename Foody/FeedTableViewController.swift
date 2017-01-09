@@ -15,7 +15,7 @@ class FeedTableViewController: UITableViewController {
     var account : User?
     var yums = [String]()
     @IBOutlet weak var yumIcon: UIBarButtonItem!
-    let ip = Variables.ip
+    
     //Create instance of UserService
     let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
     
@@ -38,7 +38,7 @@ class FeedTableViewController: UITableViewController {
     
     func getYumList() -> Bool{
         //Create URL request
-        var request = URLRequest(url: URL(string: ip + "/yums/list/" + (account?.id)!)!)
+        var request = URLRequest(url: URL(string: Variables.ip + "/yums/list/" + (account?.id)!)!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -114,7 +114,7 @@ class FeedTableViewController: UITableViewController {
         //Reload table
         self.tableView.reloadData()
         //Create URL request
-        var request = URLRequest(url: URL(string: ip + "/posts")!)
+        var request = URLRequest(url: URL(string: Variables.ip + "/posts")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -232,7 +232,7 @@ class FeedTableViewController: UITableViewController {
         
         
         //Create URL request
-        var request = URLRequest(url: URL(string: ip + "/yums")!)
+        var request = URLRequest(url: URL(string: Variables.ip + "/yums")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

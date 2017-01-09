@@ -26,7 +26,6 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
     @IBOutlet weak var timeControl: TimeControl!
     @IBOutlet weak var servings: UIPickerView!
     
-    let ip = Variables.ip
     var ingredientCount : Int = 0
     var selectedImage : String = ""
     var account : User?
@@ -121,7 +120,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         spinner.startAnimating()
         
         //Create URL request
-        var request = URLRequest(url: URL(string: ip + "/posts")!)
+        var request = URLRequest(url: URL(string: Variables.ip + "/posts")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

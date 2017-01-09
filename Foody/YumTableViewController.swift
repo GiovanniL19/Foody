@@ -13,7 +13,7 @@ class YumTableViewController: UITableViewController {
     var yums : [Post] = []
     var account : User?
     @IBOutlet weak var loadingView: UIView!
-    let ip = Variables.ip
+    
     //Create instance of UserService
     let userService = UserService(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
     
@@ -76,7 +76,7 @@ class YumTableViewController: UITableViewController {
         //Reload table
         self.tableView.reloadData()
         //Create URL request
-        var request = URLRequest(url: URL(string: ip + "/yums/" + (account?.id)!)!)
+        var request = URLRequest(url: URL(string: Variables.ip + "/yums/" + (account?.id)!)!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -178,7 +178,7 @@ class YumTableViewController: UITableViewController {
         
         
         //Create URL request
-        var request = URLRequest(url: URL(string: ip + "/yums")!)
+        var request = URLRequest(url: URL(string: Variables.ip + "/yums")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

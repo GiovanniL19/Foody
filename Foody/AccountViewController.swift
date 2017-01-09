@@ -22,7 +22,6 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet var tapGesture: UITapGestureRecognizer!
-    let ip = Variables.ip
     
     var selectedImage : String = ""
     var account : User?
@@ -85,7 +84,7 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
                     pulseProfilePicture(numberOfpulses: 5)
                     //This saves core data and makes PUT request to save online
                     //Create URL request
-                    var request = URLRequest(url: URL(string:  ip + "/users/" + (account?.id)!)!)
+                    var request = URLRequest(url: URL(string:  Variables.ip + "/users/" + (account?.id)!)!)
                     
                     //Set content type
                     request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -241,7 +240,7 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         deleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             //Create URL request
-            var request = URLRequest(url: URL(string: self.ip + "/users/" + (self.account?.id)!)!)
+            var request = URLRequest(url: URL(string: Variables.ip + "/users/" + (self.account?.id)!)!)
             //Set content type
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
             
