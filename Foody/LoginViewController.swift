@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
         if(self.username.text != ""){
             if(self.password.text != ""){
                 //Create URL request
-                var request = URLRequest(url: URL(string: Variables.ip + "/auth?username=" + self.username.text! + "&password=" + self.password.text!)!)
+                var request = URLRequest(url: URL(string: Global.ip + "/auth?username=" + self.username.text! + "&password=" + self.password.text!)!)
                 
                 //Set content type
                 request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

@@ -36,7 +36,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func registerAccount(){
         //Create URL request
-        var request = URLRequest(url: URL(string: Variables.ip + "/users")!)
+        var request = URLRequest(url: URL(string: Global.ip + "/users")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

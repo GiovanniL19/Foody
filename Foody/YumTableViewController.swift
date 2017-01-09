@@ -76,7 +76,7 @@ class YumTableViewController: UITableViewController {
         //Reload table
         self.tableView.reloadData()
         //Create URL request
-        var request = URLRequest(url: URL(string: Variables.ip + "/yums/" + (account?.id)!)!)
+        var request = URLRequest(url: URL(string: Global.ip + "/yums/" + (account?.id)!)!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -178,7 +178,7 @@ class YumTableViewController: UITableViewController {
         
         
         //Create URL request
-        var request = URLRequest(url: URL(string: Variables.ip + "/yums")!)
+        var request = URLRequest(url: URL(string: Global.ip + "/yums")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

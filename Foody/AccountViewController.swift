@@ -84,7 +84,7 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
                     pulseProfilePicture(numberOfpulses: 5)
                     //This saves core data and makes PUT request to save online
                     //Create URL request
-                    var request = URLRequest(url: URL(string:  Variables.ip + "/users/" + (account?.id)!)!)
+                    var request = URLRequest(url: URL(string:  Global.ip + "/users/" + (account?.id)!)!)
                     
                     //Set content type
                     request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -240,7 +240,7 @@ class AccountViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         deleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             //Create URL request
-            var request = URLRequest(url: URL(string: Variables.ip + "/users/" + (self.account?.id)!)!)
+            var request = URLRequest(url: URL(string: Global.ip + "/users/" + (self.account?.id)!)!)
             //Set content type
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
             

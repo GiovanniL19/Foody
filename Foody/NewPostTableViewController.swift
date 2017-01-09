@@ -120,7 +120,7 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         spinner.startAnimating()
         
         //Create URL request
-        var request = URLRequest(url: URL(string: Variables.ip + "/posts")!)
+        var request = URLRequest(url: URL(string: Global.ip + "/posts")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -129,7 +129,8 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         request.httpMethod = "POST"
         
         //Create dictionary
-        let dictionary : [String : Any] = ["title": postTitle.text, "username": account?.username, "profilePicture": account?.profilePicture, "image": selectedImage, "desc": self.postDescription.text, "servings": selectedServing, "method": method.text, "ingredients": ingredients, "difficulty": String(difficultyControl.difficulty), "time": String(timeControl.time)]
+        //Force unwrap and Any casting has been used to prevent warning message
+        let dictionary : [String : Any] = ["title": postTitle.text!, "username": account?.username as Any, "profilePicture": account?.profilePicture as Any, "image": selectedImage, "desc": self.postDescription.text!, "servings": selectedServing, "method": method.text, "ingredients": ingredients, "difficulty": String(difficultyControl.difficulty), "time": String(timeControl.time)]
         
         //Add json to body
         request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
@@ -163,9 +164,8 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         }
         task.resume()
     }
-    
-    //MARK: Actions
-    @IBAction func addIngredient(_ sender: UIButton) {
+    func generateTextField(_ ingredientCount : Int, _ view : UIView){
+        
         //Set y position for new input field
         let yAxis : Double = 50.00 * Double(ingredientCount)
         
@@ -181,8 +181,6 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         
         //set placeholder text
         textField.placeholder = "Ingredient " + String(ingredientCount + 1) +  "..."
-        //incerement number of ingredients added
-        ingredientCount += 1
         
         //give input field a tag
         textField.tag = 0000 + ingredientCount
@@ -197,6 +195,15 @@ class NewPostTableViewController: UITableViewController, UIImagePickerController
         //Scroll to bottom of scroll view
         let bottomOffset = CGPoint(x: 0, y: CGFloat(newHeight) - scrollView.bounds.size.height)
         scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+    
+
+    //MARK: Actions
+    @IBAction func addIngredient(_ sender: UIButton) {
+        //Create input field and update ui
+        generateTextField(ingredientCount, ingredientsScrollView)
+        //incerement number of ingredients added
+        ingredientCount += 1
     }
     
     @IBAction func addImage(_ sender: Any) {

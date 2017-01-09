@@ -38,7 +38,7 @@ class FeedTableViewController: UITableViewController {
     
     func getYumList() -> Bool{
         //Create URL request
-        var request = URLRequest(url: URL(string: Variables.ip + "/yums/list/" + (account?.id)!)!)
+        var request = URLRequest(url: URL(string: Global.ip + "/yums/list/" + (account?.id)!)!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -114,7 +114,7 @@ class FeedTableViewController: UITableViewController {
         //Reload table
         self.tableView.reloadData()
         //Create URL request
-        var request = URLRequest(url: URL(string: Variables.ip + "/posts")!)
+        var request = URLRequest(url: URL(string: Global.ip + "/posts")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -232,7 +232,7 @@ class FeedTableViewController: UITableViewController {
         
         
         //Create URL request
-        var request = URLRequest(url: URL(string: Variables.ip + "/yums")!)
+        var request = URLRequest(url: URL(string: Global.ip + "/yums")!)
         
         //Set content type
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -242,7 +242,7 @@ class FeedTableViewController: UITableViewController {
         
         //Create dictionary
         let userId = account?.id;
-        let dictionary : [String : Any] = ["user": userId, "post": postID]
+        let dictionary : [String : Any] = ["user": userId!, "post": postID]
         
         //Add json to body
         request.httpBody = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
