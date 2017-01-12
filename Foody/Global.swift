@@ -7,5 +7,11 @@
 //
 
 struct Global {
-    static var ip = "http://10.4.161.125:3002"
+    //Tuple
+    static let path = (ip: "10.4.161.60", port: "3002")
+    
+    //Computed property
+   static var ip : String{
+        return "http://\(path.ip):\(path.port)"
+    }
 }

@@ -8,7 +8,7 @@
 
 import CoreData
 
-class UserService{
+struct UserService{
     
     var context: NSManagedObjectContext
     
